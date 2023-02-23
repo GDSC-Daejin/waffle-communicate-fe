@@ -20,11 +20,11 @@ const Mode = styled.button`
   height: 40px;
   border-radius: 50%;
   right: 5%;
-  position: fixed;
-  top: 1%;
+  position: sticky;
   font-size: 25px;
   text-shadow: 2px 2px 2px #000;
   transform: ${(props) => props.theme.mode_rotate};
+  cursor: pointer;
 `;
 
 
