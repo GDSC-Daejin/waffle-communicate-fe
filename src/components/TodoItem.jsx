@@ -2,11 +2,9 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { useTodoDispatch } from "../TodoContext";
 
-
 const WrapLeft = styled.div`
   width: 100%;
-   grid-column-start: 1;
-
+  grid-column-start: 1;
 `;
 const WrapRight = styled.div`
   width: 100%;
@@ -18,6 +16,7 @@ const Context = styled.div`
   background-color: #aaaaaa;
   margin: 10px;
   color: #000000;
+  font-size: 28px;
 `;
 const TodoButton = styled.button`
   padding: 1% 1%;
@@ -27,15 +26,15 @@ const TodoButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
-  background-color : #A2FA42;
-  
+  background-color: #a2fa42;
+  font-size: 30px;
 `;
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
 
   const onToggle = () => {
     dispatch({
-      type: "TOGGLE",
+      type: "COMPLETE",
       id,
     });
   };
@@ -49,23 +48,24 @@ function TodoItem({ id, done, text }) {
 
   return (
     <>
-      
-        {!done ? 
+      {!done ? (
         <WrapLeft>
           <Context>
             <TodoButton>수정</TodoButton>
-            <TodoButton onClick={onRemove}>삭제</TodoButton>
-           {text}
+            <TodoButton onClick={onRemove}>🗑</TodoButton>
+            <TodoButton onClick={onToggle}>✔</TodoButton>
+            {text}
           </Context>
-        </WrapLeft> :
+        </WrapLeft>
+      ) : (
         <WrapRight>
           <Context>
-            <TodoButton onClick={onRemove}>삭제</TodoButton>
+            <TodoButton onClick={onRemove}>🗑</TodoButton>
+            <TodoButton onClick={onToggle}>Doing</TodoButton>
             {text}
           </Context>
         </WrapRight>
-        }
-  
+      )}
     </>
   );
 }

@@ -8,7 +8,7 @@ function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return state.concat(action.todo);
-    case "TOGGLE":
+    case "COMPLETE":
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
