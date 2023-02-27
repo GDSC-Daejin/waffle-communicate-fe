@@ -13,11 +13,12 @@ const WrapRight = styled.div`
 
 const Context = styled.div`
   padding: 10px;
-  background-color: #aaaaaa;
+  background-color: ${(props) => props.theme.contextbg};
   margin: 10px;
-  color: #000000;
+  color: ${(props) => props.theme.contexttx};
   font-size: 28px;
 `;
+
 const TodoButton = styled.button`
   padding: 1% 1%;
   margin-right: 10px;
@@ -52,16 +53,17 @@ function TodoItem({ id, done, text }) {
         <WrapLeft>
           <Context>
             <TodoButton>수정</TodoButton>
-            <TodoButton onClick={onRemove}>🗑</TodoButton>
-            <TodoButton onClick={onToggle}>✔</TodoButton>
+            <TodoButton onClick={onRemove}>❌</TodoButton>
+            <TodoButton onClick={onToggle}>❤️</TodoButton>
             {text}
           </Context>
         </WrapLeft>
       ) : (
         <WrapRight>
           <Context>
-            <TodoButton onClick={onRemove}>🗑</TodoButton>
-            <TodoButton onClick={onToggle}>Doing</TodoButton>
+            <TodoButton onClick={onRemove}>❌</TodoButton>
+            <TodoButton onClick={onToggle}>💔</TodoButton>
+
             {text}
           </Context>
         </WrapRight>
