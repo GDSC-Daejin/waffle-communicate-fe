@@ -4,7 +4,6 @@ import styled from "styled-components";
 import TodoList from "../components/TodoList";
 import TodoCreate from "../components/TodoCreate";
 
-
 const Container1 = styled.div`
   display: inline-flex;
   width: 100%;
@@ -26,13 +25,14 @@ const Container2 = styled.div`
   display: grid;
   grid-auto-flow: dense;
   width: 100%;
+  height: 100%;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
 `;
 function Body() {
   return (
     <>
-      <TodoCreate/>
+      <TodoCreate />
       <Container1>
         <WrapLeft>
           <Status>진행 중 ~</Status>

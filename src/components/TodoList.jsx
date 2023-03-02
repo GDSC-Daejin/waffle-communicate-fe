@@ -5,6 +5,7 @@ import { useTodoState } from "../TodoContext";
 
 function TodoList() {
   const todos = useTodoState();
+  
   return (
     <>
       {todos.map((todo) => (

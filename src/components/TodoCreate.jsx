@@ -59,7 +59,12 @@ function TodoCreate() {
     nextId.current += 1;
     setValue("");
   };
-
+  const onRemove = () => {
+    dispatch({
+      type: "REMOVE",
+      id,
+    });
+  };
   return (
     <>
       <Wrapper1>

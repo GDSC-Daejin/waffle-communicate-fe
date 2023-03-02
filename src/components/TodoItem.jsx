@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { useTodoDispatch } from "../TodoContext";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const WrapLeft = styled.div`
   width: 100%;
@@ -17,6 +18,7 @@ const Context = styled.div`
   margin: 10px;
   color: ${(props) => props.theme.contexttx};
   font-size: 28px;
+  cursor: pointer;
 `;
 
 const TodoButton = styled.button`
@@ -30,9 +32,9 @@ const TodoButton = styled.button`
   background-color: #a2fa42;
   font-size: 30px;
 `;
+
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
-
   const onToggle = () => {
     dispatch({
       type: "COMPLETE",
@@ -46,12 +48,33 @@ function TodoItem({ id, done, text }) {
       id,
     });
   };
+  const DragStarted = (e, id) => {
+    console.log("Drag has started", id);
+    e.dataTransfer.setData("todoID", id);
+    console.log("Drag has started", id);
+  };
+  const DraggingOver = (e) => {
+    e.preventDefault();
+    //console.log("Dragging Over now");
+  };
+  const dragDropped = (e) => {
+    //console.log("You have dropped!");
+    let transferedTodoID = e.dataTransfer.getData("todoID");
 
+    dispatch({
+      type: "COMPLETE",
+      transferedTodoID,
+    });
+  };
   return (
     <>
       {!done ? (
-        <WrapLeft>
-          <Context>
+        <WrapLeft
+          droppable
+          onDragOver={(e) => DraggingOver(e)}
+          onDrop={(e) => dragDropped(e)}
+        >
+          <Context draggable onDragStart={(e) => DragStarted(e, id)}>
             <TodoButton>수정</TodoButton>
             <TodoButton onClick={onRemove}>❌</TodoButton>
             <TodoButton onClick={onToggle}>❤️</TodoButton>
@@ -59,11 +82,14 @@ function TodoItem({ id, done, text }) {
           </Context>
         </WrapLeft>
       ) : (
-        <WrapRight>
-          <Context>
+        <WrapRight
+          droppable
+          onDragOver={(e) => DraggingOver(e)}
+          onDrop={(e) => dragDropped(e)}
+        >
+          <Context draggable onDragStart={(e) => DragStarted(e, id)}>
             <TodoButton onClick={onRemove}>❌</TodoButton>
             <TodoButton onClick={onToggle}>💔</TodoButton>
-
             {text}
           </Context>
         </WrapRight>
