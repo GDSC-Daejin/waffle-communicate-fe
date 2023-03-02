@@ -3,6 +3,7 @@ import styled from "styled-components";
 //import {Header, Brand, Mode} from "./navbar.styled";
 import TodoList from "../components/TodoList";
 import TodoCreate from "../components/TodoCreate";
+import { useTodoDispatch } from "../TodoContext";
 
 const Container1 = styled.div`
   display: inline-flex;
@@ -25,11 +26,25 @@ const Container2 = styled.div`
   display: grid;
   grid-auto-flow: dense;
   width: 100%;
-  height: 100%;
+  height: 150%;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
 `;
 function Body() {
+  const dispatch = useTodoDispatch();
+  const DraggingOver = (e) => {
+    e.preventDefault();
+    //console.log("Dragging Over now");
+  };
+  const dragDropped = (e) => {
+    //console.log("You have dropped!");
+    let transferedTodoID = parseInt(e.dataTransfer.getData("todoID"));
+
+    dispatch({
+      type: "COMPLETE",
+      id: transferedTodoID,
+    });
+  };
   return (
     <>
       <TodoCreate />
@@ -41,7 +56,9 @@ function Body() {
           <Status>완료 !</Status>
         </WrapRight>
       </Container1>
-      <Container2>
+      <Container2  droppable
+            onDragOver={(e) => DraggingOver(e)}
+            onDrop={(e) => dragDropped(e)}>
         <TodoList />
       </Container2>
     </>
