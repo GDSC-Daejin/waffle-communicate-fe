@@ -13,17 +13,13 @@ function App() {
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
   };
-
   return (
     <div className="App">
       <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <GlobalStyles />
-        
         <TodoProvider>
-        <Body>
-          </Body>
-          
+          <Body />
         </TodoProvider>
       </ThemeProvider>
     </div>

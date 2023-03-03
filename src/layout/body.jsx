@@ -5,13 +5,14 @@ import TodoList from "../components/TodoList";
 import TodoCreate from "../components/TodoCreate";
 import { useTodoDispatch } from "../TodoContext";
 
+
 const Container1 = styled.div`
-  display: inline-flex;
+  display: flex;
   width: 100%;
-  padding-bottom: 10px;
+  border: 3px solid;
 `;
 const WrapLeft = styled.div`
-  border-right: 2px solid;
+  border-right: 1px solid;
   width: 50%;
 `;
 const WrapRight = styled.div`
@@ -19,8 +20,9 @@ const WrapRight = styled.div`
 `;
 const Status = styled.h1`
   font-size: 30px;
-  padding-top: 4%;
-  margin-left: 45%;
+  padding : 2% 0px;
+
+  text-align:center;
 `;
 const Container2 = styled.div`
   display: grid;
@@ -29,6 +31,7 @@ const Container2 = styled.div`
   height: 150%;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+  border: 1px solid;
 `;
 function Body() {
   const dispatch = useTodoDispatch();
@@ -38,11 +41,11 @@ function Body() {
   };
   const dragDropped = (e) => {
     //console.log("You have dropped!");
-    let transferedTodoID = parseInt(e.dataTransfer.getData("todoID"));
+    const transferedTodoID1 = parseInt(e.dataTransfer.getData("drag_startID"));
 
     dispatch({
       type: "COMPLETE",
-      id: transferedTodoID,
+      id: transferedTodoID1,
     });
   };
   return (

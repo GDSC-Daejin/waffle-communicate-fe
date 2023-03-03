@@ -3,9 +3,10 @@ import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { useTodoState } from "../TodoContext";
 
+
 function TodoList() {
   const todos = useTodoState();
-  
+
   return (
     <>
       {todos.map((todo) => (
@@ -16,6 +17,7 @@ function TodoList() {
           key={todo.id}
         />
       ))}
+      
     </>
   );
 }
