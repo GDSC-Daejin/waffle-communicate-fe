@@ -64,12 +64,7 @@ function TodoCreate() {
     nextId.current += 1;
     setValue("");
   };
-  const onRemove = () => {
-    dispatch({
-      type: "REMOVE",
-      id,
-    });
-  };
+
   
   return (
     <>
@@ -82,8 +77,10 @@ function TodoCreate() {
             value={value}
             placeholder="할 일을 입력 후, Enter 를 누르세요"
           />
-          <Plus><IoIosAdd/></Plus>
+        
+         <Plus ><IoIosAdd/></Plus>
         </Form>
+        <Plus onClick={onSubmit}><IoIosAdd/></Plus>
       </Wrapper1>
     </>
   );

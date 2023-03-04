@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import { useTodoDispatch } from "../TodoContext";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
+import Modal from "./Modal";
 
 const WrapLeft = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ const WrapLeft = styled.div`
   border-right: 1px solid;
 `;
 const WrapRight = styled.div`
-  width: %;
+  width: 100%;
   grid-column-start: 2;
   border-left: 1px solid;
 `;
@@ -20,7 +21,7 @@ const Context = styled.div`
   margin: 15px;
   color: ${(props) => props.theme.contexttx};
   font-size: 28px;
-  cursor: pointer;
+  cursor: grab;
   border-radius: 30px;
   border: 2px solid ${(props) => props.theme.contextbg};
 `;
@@ -64,13 +65,10 @@ function TodoItem({ id, done, text }) {
       {!done ? (
         <WrapLeft>
           <Context draggable onDragStart={(e) => Drag_Started(e, id)}>
-            <TodoButton>
-              <FiEdit />
-            </TodoButton>
+            <Modal id={id} text={text} />
             <TodoButton onClick={onRemove}>
               <FiTrash2 />
             </TodoButton>
-
             {text}
           </Context>
         </WrapLeft>

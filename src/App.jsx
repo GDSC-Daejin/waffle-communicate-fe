@@ -4,8 +4,6 @@ import GlobalStyles from "./styles/globalStyles";
 import { darkTheme, lightTheme } from "./styles/theme";
 import Navbar from "./layout/navbar";
 import Body from "./layout/body";
-import TodoTemplate from "./components/TodoTemplate";
-import TodoList from "./components/TodoList";
 import { TodoProvider } from "./TodoContext.jsx";
 
 function App() {
