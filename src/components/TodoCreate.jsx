@@ -10,14 +10,15 @@ const Wrapper1 = styled.div`
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
-  
+  background-color : ${(props)=> props.theme.todoInsertbg}
 `;
 const Title = styled.h1`
   align-items : center;
   text-align : center;
   padding-bottom: 20px;
-  font-size: 30px;
+  font-size: 35px;
   position: flex;
+  font-weight: ${(props)=> props.theme.fontWeight}
 `;
 const Form = styled.form`
   margin-left: 35%;

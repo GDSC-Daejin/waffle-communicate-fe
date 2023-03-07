@@ -10,6 +10,7 @@ const Container1 = styled.div`
   display: flex;
   width: 100%;
   border: 3px solid;
+  background-color : ${(props)=> props.theme.todobg}
 `;
 const WrapLeft = styled.div`
   border-right: 1px solid;
@@ -21,8 +22,8 @@ const WrapRight = styled.div`
 const Status = styled.h1`
   font-size: 30px;
   padding : 2% 0px;
-
   text-align:center;
+  font-weight: ${(props)=> props.theme.fontWeight}
 `;
 const Container2 = styled.div`
   display: grid;

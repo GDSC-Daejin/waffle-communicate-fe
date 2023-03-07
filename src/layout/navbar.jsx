@@ -6,13 +6,16 @@ const Header = styled.div`
   border-bottom: ${(props) => props.theme.border};
   padding: 10px;
   display : flex;
+  border : 2px solid;
+  background-color : ${(props)=> props.theme.templatebg}
 `;
 const Brand = styled.h1`
   font-size: 1.5em;
   left: 2%;
+  font-weight : ${(props)=> props.theme.fontWeight}
 `;
 const Mode_div = styled.div `
-  padding-left :89%;
+  padding-left :86%;
 `;
 const Mode = styled.button`
   border: 1px #aaaaaa;

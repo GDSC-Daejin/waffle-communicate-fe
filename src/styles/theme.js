@@ -1,18 +1,23 @@
 export const darkTheme = {
   color: "#ffffff",
   bgColor: "#17171A",
-  border: "1px solid #505050",
+  border: "2px solid #505050",
   boxcolor: "#ADE7F7",
   mode_padding: "0px 0px 3px 0px",
-  contextbg: "#342825", 
+  contextbg: "#000000", 
   contexttx: "#ffffff",
   buttoncolor : "#ECD0C1",
+  templatebg : "#212121",
+  todoInsertbg : "#3B3B3B",
+  todobg : "#555555",
+  todoListbg: "#707070",
+  fontColor: "#000000",
 };
 
 export const lightTheme = {
   color: "#000000",
   bgColor: "#E2E2E6", 
-  border: "1px solid #505050",
+  border: "2px solid #505050",
   boxcolor: "#ADE7F7",
   mode_rotate: "rotateZ(45deg)",
   mode_padding: "0px 0px 3px 5px",
@@ -20,4 +25,10 @@ export const lightTheme = {
   contextbg: "#2B3038",
   contexttx: "#ffffff",
   buttoncolor : "#ECD0C1",
+  todoInsertbg : "#FAEAB1",
+  todobg : "#E5BA73",
+  todoListbg: "#C58940",
+  templatebg : "#FAF8F1",
+  fontWeight: "600",
+  fontColor : "#ffffff",
 };

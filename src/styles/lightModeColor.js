@@ -53,3 +53,39 @@ export const mode_rotate = {
 export const listadd_bgColor = {
   listadd_bgColor: "#111111",
 }
+// 라이트모드 색상코드 조합입니다
+// todoInsertbg : "#FAEAB1",
+// todobg : "#E5BA73",
+// todoListbg: "#C58940",
+// templatebg : "#FAF8F1",
+
+// todoInsertbg : "#8EA7E9",
+// todobg : "#E5E0FF",
+// todoListbg: "#FFF2F2",
+// templatebg : "#7286D3",
+
+// todoInsertbg : "#FFF1DC",
+// todobg : "#E8D5C4",
+// todoListbg: "#EEEEEE",
+// templatebg : "#3A98B9",
+
+// todoInsertbg : "#FFFBEB",
+// todobg : "#FFE7CC",
+// todoListbg: "#F8CBA6",
+// templatebg : "#ECF9FF",
+
+// todoInsertbg : "#FAEAB1",
+// todobg : "#E5BA73",
+// todoListbg: "#C58940",
+// templatebg : "#FAF8F1",
+
+// todoInsertbg : "#CEAB93",
+// todobg : "#E3CAA5",
+// todoListbg: "#FFFBE9",
+// templatebg : "#AD8B73",
+
+// todoInsertbg : "#CEAB93",
+// todobg : "#E3CAA5",
+// todoListbg: "#FFFBE9",
+// templatebg : "#AD8B73",
+// contextbg: "#000000", 
