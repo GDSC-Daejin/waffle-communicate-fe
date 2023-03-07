@@ -12,13 +12,6 @@ export const contextcolor ={
   contextbg4 : "#0353A4",
 }
 
-export const bgColor = {
-  bgColor1 : "#E2E2E6",
-  bgColor2 : "#D9D9D9",
-  bgcolor3 : "#F4F3EE",
-  bgcolor4 : "#979DAC",
-}
-
 export const color = {
   color: "#000000",
 }
@@ -50,4 +43,10 @@ export const buttoncolor ={
   buttoncolor1 : "#ECD0C1",
   buttoncolor2 : "#E0AFA0",
   buttoncolor3 : "#F5CB5C",
+}
+
+export const contextbg = {
+  contextbg1: "#2B3038",
+  contextbg2: "#22223B",
+  contextbg3: "#003049",
 }

@@ -21,7 +21,7 @@ export const contextbg ={
   contentbg6: "#666464",
 }
 
-export const  buttoncolor ={
+export const buttoncolor ={
   buttoncolor1 : "#ECD0C1",
   buttoncolor2 : "#284b63",
   buttoncolor3 : "#EE6C4D",
