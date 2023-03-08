@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useTodoDispatch, useTodoNextId } from "../TodoContext";
+import { useTodoDispatch, useTodoNextId } from "../Context";
 import { IoIosAdd } from "react-icons/io";
 
-
-const Wrapper1 = styled.div`
+const Todocreate = styled.div`
   padding-top: 25px;
   border-bottom: 1px solid;
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
-  
 `;
 const Title = styled.h1`
-  align-items : center;
-  text-align : center;
+  align-items: center;
+  text-align: center;
   padding-bottom: 20px;
   font-size: 30px;
   position: flex;
@@ -24,7 +22,6 @@ const Form = styled.form`
   width: 40%;
   padding-bottom: 20px;
   position: flex;
-  
 `;
 const ListAdd = styled.input`
   position: flex;
@@ -51,7 +48,8 @@ function TodoCreate() {
   const onChange = (e) => setValue(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!value ||!value.replace(/\s/g, '').length) return alert("내용을 입력해주세요.");
+    if (!value || !value.replace(/\s/g, "").length)
+      return alert("내용을 입력해주세요.");
 
     dispatch({
       type: "CREATE",
@@ -65,10 +63,9 @@ function TodoCreate() {
     setValue("");
   };
 
-  
   return (
     <>
-      <Wrapper1>
+      <Todocreate>
         <Title>To do List</Title>
         <Form onSubmit={onSubmit}>
           <ListAdd
@@ -77,11 +74,15 @@ function TodoCreate() {
             value={value}
             placeholder="할 일을 입력 후, Enter 를 누르세요"
           />
-        
-         <Plus ><IoIosAdd/></Plus>
+
+          <Plus>
+            <IoIosAdd />
+          </Plus>
         </Form>
-        <Plus onClick={onSubmit}><IoIosAdd/></Plus>
-      </Wrapper1>
+        <Plus onClick={onSubmit}>
+          <IoIosAdd />
+        </Plus>
+      </Todocreate>
     </>
   );
 }

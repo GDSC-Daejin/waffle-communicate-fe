@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import { useTodoDispatch } from "../TodoContext";
+import { useTodoDispatch } from "../Context";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 

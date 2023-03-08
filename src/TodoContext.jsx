@@ -1,15 +1,15 @@
-import React, { createContext, useReducer, useContext, useRef } from "react";
-
-const TodoStateContext = createContext(null);
-const TodoDispatchContext = createContext(null);
-const TodoNextIdContext = createContext(null);
+import React, { useReducer, useRef } from "react";
+import {
+  TodoStateContext,
+  TodoDispatchContext,
+  TodoNextIdContext,
+} from "./Context";
 
 function todoReducer(state, action) {
   switch (action.type) {
     case "CREATE":
       return state.concat(action.todo);
     case "COMPLETE":
-  
       return state.map((todo) =>
         todo.id === action.id ? { ...todo, done: !todo.done } : todo
       );
@@ -18,8 +18,8 @@ function todoReducer(state, action) {
       return state.filter((todo) => todo.id !== action.id);
     case "EDIT":
       return state.map((todo) =>
-      todo.id === action.id ? {...todo, text: action.text} : todo
-    );
+        todo.id === action.id ? { ...todo, text: action.text } : todo
+      );
     default:
       return state;
   }
@@ -42,7 +42,8 @@ const initialTodos = [
 
 export function TodoProvider({ children }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
-  const nextId = useRef(5);
+
+  const nextId = useRef(initialTodos.length + 1);
 
   return (
     <TodoStateContext.Provider value={state}>
@@ -53,16 +54,4 @@ export function TodoProvider({ children }) {
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>
   );
-}
-
-export function useTodoState() {
-  return useContext(TodoStateContext);
-}
-
-export function useTodoDispatch() {
-  return useContext(TodoDispatchContext);
-}
-
-export function useTodoNextId() {
-  return useContext(TodoNextIdContext);
 }

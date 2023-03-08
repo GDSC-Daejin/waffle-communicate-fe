@@ -1,8 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { useTodoState } from "../TodoContext";
-
+import { useTodoState } from "../Context";
 
 function TodoList() {
   const todos = useTodoState();
@@ -17,7 +15,6 @@ function TodoList() {
           key={todo.id}
         />
       ))}
-      
     </>
   );
 }

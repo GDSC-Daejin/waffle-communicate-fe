@@ -1,23 +1,7 @@
 import { React, useState } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { useTodoDispatch } from "../TodoContext";
-
-export const ModalContainer = styled.div``;
-export const ModalBtn = styled.button``;
-const TodoButton = styled.button`
-  padding: 1% 1%;
-  margin-right: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  background-color: ${(props) => props.theme.buttoncolor};
-  font-size: 30px;
-  border: 3px solid;
-  border-radius: 10px;
-  border-style: outset;
-  width: 10%;
-`;
+import { useTodoDispatch } from "../Context";
 
 export const ModalBackdrop = styled.div`
   width: 100%;
@@ -38,7 +22,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 50%;
+  height: 25%;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
@@ -56,7 +40,7 @@ const Navbar = styled.div`
   border-bottom: 1px solid;
 `;
 const Title = styled.div`
-  margin-left: 10%;
+  margin-left: 5%;
 `;
 const Exit = styled.div`
   margin-right: 5%;
@@ -70,12 +54,28 @@ const Exit = styled.div`
 
 const ModalBody = styled.div``;
 
-const Form = styled.form``;
+const Form = styled.form`
+  margin-top: 10px;
+`;
 const ListAdd = styled.input`
   position: flex;
-  width: 80%;
-  height: 40px;
+  width: 70%;
   margin-bottom: 10px;
+  margin-right: 1%;
+  font-size: 30px;
+  height: 50px;
+`;
+const TodoButton = styled.button`
+  padding: 1% 1%;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  background-color: ${(props) => props.theme.buttoncolor};
+  font-size: 30px;
+  border: 3px solid;
+  border-radius: 10px;
+  border-style: outset;
 `;
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,7 +106,6 @@ export const Modal = (props) => {
     });
   };
   const onToggle = () => {
-    
     dispatch({
       type: "COMPLETE",
       id: props.id,
@@ -124,25 +123,22 @@ export const Modal = (props) => {
               <Title>EDIT</Title>
               <Exit onClick={openModalHandler}>&times;</Exit>
             </Navbar>
-            <Form onSubmit={onSubmit}>
-              <ModalBody>
+            <ModalBody>
+              <Form onSubmit={onSubmit}>
                 <ListAdd
                   autoFocus
                   onChange={onChange}
                   value={value}
                   placeholder={props.text}
                 />
-              </ModalBody>
-            </Form>
-            <TodoButton onClick={onSubmit}>
-              수정하기
-            </TodoButton>
-            <TodoButton onClick={onToggle}>
-              완료
-            </TodoButton>
-            <TodoButton onClick={onRemove}>
-              <FiTrash2 />
-            </TodoButton>
+                <TodoButton onClick={onSubmit}>수정하기</TodoButton>
+              </Form>
+
+              <TodoButton onClick={onToggle}>완료</TodoButton>
+              <TodoButton onClick={onRemove}>
+                <FiTrash2 />
+              </TodoButton>
+            </ModalBody>
           </ModalView>
         </ModalBackdrop>
       ) : null}
