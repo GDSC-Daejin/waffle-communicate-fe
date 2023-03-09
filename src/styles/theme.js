@@ -33,5 +33,5 @@ export const lightTheme = {
   containboradbg : "#FAF8F1",
   fontWeight: "600",
   fontColor : "#ffffff",
-  PlusButtonbg : "#D7C474",
+  PlusButtonbg : "#DB5E32",
 };
