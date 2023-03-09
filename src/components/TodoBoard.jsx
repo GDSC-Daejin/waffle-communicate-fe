@@ -7,6 +7,7 @@ const Container_status = styled.div`
   display: flex;
   width: 100%;
   border: 3px solid;
+  background-color:${(props)=> props.theme.containstatusbg};
 `;
 const Wrapper_uncomplete = styled.div`
   border-right: 1px solid;
@@ -18,8 +19,8 @@ const Wrapper_complete = styled.div`
 const Status = styled.h1`
   font-size: 30px;
   padding: 2% 0px;
-
-  text-align: center;
+  font-weight: bold;
+  margin-left: 10px;
 `;
 const Container_board = styled.div`
   display: grid;
@@ -54,12 +55,10 @@ function TodoBoard() {
     <>
       <Container_status>
         <Wrapper_uncomplete>
-          <Status>진행 중 ~</Status>
-          <Status>{uncomplete.length}</Status>
+          <Status>UNCOMPLETE ({uncomplete.length})</Status>
         </Wrapper_uncomplete>
         <Wrapper_complete>
-          <Status>완료 !</Status>
-          <Status>{complete.length}</Status>
+          <Status>COMPLETE ({complete.length})</Status>
         </Wrapper_complete>
       </Container_status>
       <Container_board

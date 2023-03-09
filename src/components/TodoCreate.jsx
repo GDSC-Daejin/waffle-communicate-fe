@@ -9,19 +9,24 @@ const Todocreate = styled.div`
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
+  background-color:${(props)=> props.theme.todocreatebg};
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
 `;
 const Title = styled.h1`
   align-items: center;
   text-align: center;
   padding-bottom: 20px;
-  font-size: 30px;
-  position: flex;
+  font-size: 35px;
+  font-weight:${(props)=>props.theme.fontWeight};
 `;
 const Form = styled.form`
-  margin-left: 35%;
-  width: 40%;
   padding-bottom: 20px;
-  position: flex;
+  display:flex;
+  width:50%;
+  padding-left:45px;
 `;
 const ListAdd = styled.input`
   position: flex;
@@ -30,13 +35,15 @@ const ListAdd = styled.input`
   margin-bottom: 10px;
 `;
 const Plus = styled.button`
-  position: flex;
   width: 50px;
   height: 40px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 34px;
   margin-left: 5px;
   cursor: pointer;
+  background-color:${(props)=> props.theme.PlusButtonbg};
+  border-style:none;
+  color:white;
 `;
 
 function TodoCreate() {
@@ -76,7 +83,7 @@ function TodoCreate() {
           />
 
           <Plus>
-            <IoIosAdd />
+            <IoIosAdd onClick={onSubmit}/>
           </Plus>
         </Form>
         <Plus onClick={onSubmit}>
