@@ -4,13 +4,13 @@ import { useTodoDispatch } from "../Context";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 
-const WrapLeft = styled.div`
+const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
   border-right: 1px solid;
   background-color: ${(props)=>props.theme.containboradbg}
 `;
-const WrapRight = styled.div`
+const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
   border-left: 1px solid;
@@ -65,7 +65,7 @@ function TodoItem({ id, done, text }) {
   return (
     <>
       {!done ? (
-        <WrapLeft>
+        <Wrapper_uncomplete>
           <Context draggable onDragStart={(e) => Drag_Started(e, id)}>
             <Modal id={id} text={text} />
             <TodoButton onClick={onRemove}>
@@ -73,9 +73,9 @@ function TodoItem({ id, done, text }) {
             </TodoButton>
             {text}
           </Context>
-        </WrapLeft>
+        </Wrapper_uncomplete>
       ) : (
-        <WrapRight>
+        <Wrapper_complete>
           <Context draggable onDragStart={(e) => Drag_Started(e, id)}>
             <TodoButton onClick={onRemove}>
               <FiTrash2 />
@@ -83,7 +83,7 @@ function TodoItem({ id, done, text }) {
 
             {text}
           </Context>
-        </WrapRight>
+        </Wrapper_complete>
       )}
     </>
   );

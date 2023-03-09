@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import styled from "styled-components";
-import TodoList from "./TodoList";
+import TodoItem from "./TodoItem";
 import { useTodoDispatch, useTodoState } from "../Context";
 
 const Container_status = styled.div`
@@ -51,6 +51,7 @@ function TodoBoard() {
     todos.filter((todo) => !todo.done),
     todos.filter((todo) => todo.done),
   ];
+
   return (
     <>
       <Container_status>
@@ -66,7 +67,14 @@ function TodoBoard() {
         onDragOver={(e) => DraggingOver(e)}
         onDrop={(e) => dragDropped(e)}
       >
-        <TodoList />
+        {todos.map((todo) => (
+          <TodoItem
+            id={todo.id}
+            text={todo.text}
+            done={todo.done}
+            key={todo.id}
+          />
+        ))}
       </Container_board>
     </>
   );
