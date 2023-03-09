@@ -31,7 +31,7 @@ export const lightTheme = {
   todocreatebg: "#E5BA73",
   containstatusbg: "#C58940",
   containboradbg : "#FAF8F1",
-  fontWeight: "600",
+  fontWeight: "700",
   fontColor : "#ffffff",
   PlusButtonbg : "#DB5E32",
 };

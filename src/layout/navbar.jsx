@@ -8,10 +8,10 @@ const Header = styled.div`
   display : flex;
   border: 2px solid;
   background-color: ${(props)=> props.theme.Headerbg};
-  font-weight:${(props)=>props.theme.fontWeight}
+  font-weight:${(props)=>props.theme.fontWeight};
 `;
 const Brand = styled.h1`
-  font-size: 1.5em;
+  font-size: 19px;
   left: 2%;
 `;
 const Mode_div = styled.div `
@@ -36,7 +36,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
   return (
     <>
       <Header>
-        <Brand>소통해요</Brand>
+        <Brand>소통해요 🙌</Brand>
         <Mode_div>
         <Mode onClick={() => toggleDarkMode()}>{isDarkMode ? "🌞" : "🌛"}</Mode>
         </Mode_div>
