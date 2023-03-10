@@ -87,9 +87,7 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-        <Plus onClick={onSubmit}>
-          <IoIosAdd />
-        </Plus>
+
       </Todocreate>
     </>
   );
