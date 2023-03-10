@@ -21,7 +21,7 @@ export const contextbg ={
   contentbg6: "#666464",
 }
 
-export const buttoncolor ={
+export const  buttoncolor ={
   buttoncolor1 : "#ECD0C1",
   buttoncolor2 : "#284b63",
   buttoncolor3 : "#EE6C4D",
@@ -51,18 +51,3 @@ export const boxcolor = {
   boxcolor3: "#FEFAEO",
 }
 
-// 다크모드 색상코드 조합모음 입니다
-// templatebg : "#2D2424",
-// todoInsertbg : "#5C3D2E",
-// todobg : "#B85C38",
-// todoListbg: "#E0C097",
-
-// templatebg : "#E6E6E6",
-// todoInsertbg : "#C5A880",
-// todobg : "#532E1C",
-// todoListbg: "#0F0F0F",
-
-// templatebg : "#212121",
-// todoInsertbg : "#3B3B3B",
-// todobg : "#555555",
-// todoListbg: "#707070",

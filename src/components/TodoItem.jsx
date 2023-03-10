@@ -8,13 +8,14 @@ const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
   border-right: 1px solid;
-  background-color: ${(props)=>props.theme.containboradbg}
+  
 `;
+
 const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
   border-left: 1px solid;
-  background-color: ${(props)=>props.theme.containboradbg}
+  
 `;
 
 const Context = styled.div`
