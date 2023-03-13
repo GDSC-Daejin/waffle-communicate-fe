@@ -7,7 +7,7 @@ const Container_status = styled.div`
   display: flex;
   width: 100%;
   border: 3px solid;
-  background-color:${(props)=> props.theme.containstatusbg};
+  background-color: ${(props) => props.theme.containstatusbg};
 `;
 const Wrapper_uncomplete = styled.div`
   border-right: 1px solid;

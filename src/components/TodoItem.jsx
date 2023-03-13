@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import styled, { css } from "styled-components";
 import { useTodoDispatch } from "../Context";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
@@ -8,13 +8,13 @@ const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
   border-right: 1px solid;
-  background-color: ${(props)=>props.theme.containboradbg}
+  background-color: ${(props) => props.theme.containboradbg};
 `;
 const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
   border-left: 1px solid;
-  background-color: ${(props)=>props.theme.containboradbg}
+  background-color: ${(props) => props.theme.containboradbg};
 `;
 
 const Context = styled.div`
@@ -44,11 +44,9 @@ const TodoButton = styled.button`
 
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
-  const onToggle = () => {
-    dispatch({
-      type: "COMPLETE",
-      id,
-    });
+  const [dragMode, setDragMode] = useState(true);
+  const getDragMode = (prop) => {
+    setDragMode(prop);
   };
 
   const onRemove = () => {
@@ -66,8 +64,11 @@ function TodoItem({ id, done, text }) {
     <>
       {!done ? (
         <Wrapper_uncomplete>
-          <Context draggable onDragStart={(e) => Drag_Started(e, id)}>
-            <Modal id={id} text={text} />
+          <Context
+            draggable={dragMode}
+            onDragStart={(e) => Drag_Started(e, id)}
+          >
+            <Modal id={id} text={text} getDragMode={getDragMode} />
             <TodoButton onClick={onRemove}>
               <FiTrash2 />
             </TodoButton>
@@ -76,8 +77,11 @@ function TodoItem({ id, done, text }) {
         </Wrapper_uncomplete>
       ) : (
         <Wrapper_complete>
-          <Context draggable onDragStart={(e) => Drag_Started(e, id)}>
-            <TodoButton onClick={onRemove}>
+          <Context
+            draggable={dragMode}
+            onDragStart={(e) => Drag_Started(e, id)}
+          >
+            <TodoButton onClick={onRemove} getDragMode={getDragMode}>
               <FiTrash2 />
             </TodoButton>
 
