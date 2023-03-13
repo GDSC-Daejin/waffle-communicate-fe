@@ -4,6 +4,7 @@ import { useTodoDispatch, useTodoNextId } from "../Context";
 import { IoIosAdd } from "react-icons/io";
 
 const Todocreate = styled.div`
+  margin-top: 5%;
   padding-top: 25px;
   border-bottom: 1px solid;
   width: 100%;
@@ -86,9 +87,7 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit}/>
           </Plus>
         </Form>
-        <Plus onClick={onSubmit}>
-          <IoIosAdd />
-        </Plus>
+    
       </Todocreate>
     </>
   );
