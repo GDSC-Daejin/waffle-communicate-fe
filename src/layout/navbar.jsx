@@ -17,7 +17,6 @@ const Brand = styled.h1`
 `;
 const Mode_div = styled.div `
   padding-right:10px;
-
 `;
 const Mode = styled.button`
   border: 1px #aaaaaa;
