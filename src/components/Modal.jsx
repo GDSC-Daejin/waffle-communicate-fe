@@ -52,7 +52,10 @@ const Exit = styled.div`
   }
 `;
 
-const ModalBody = styled.div``;
+const ModalBody = styled.div`
+  padding-bottom: 5%;
+`;
+const Modalfooter = styled.div``;
 
 const Form = styled.form`
   margin-top: 10px;
@@ -134,12 +137,13 @@ export const Modal = (props) => {
                 />
                 <TodoButton onClick={onSubmit}>수정하기</TodoButton>
               </Form>
-
+            </ModalBody>
+            <Modalfooter>
               <TodoButton onClick={onToggle}>완료</TodoButton>
               <TodoButton onClick={onRemove}>
                 <FiTrash2 />
               </TodoButton>
-            </ModalBody>
+            </Modalfooter>
           </ModalView>
         </ModalBackdrop>
       ) : null}

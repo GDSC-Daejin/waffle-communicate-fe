@@ -1,3 +1,5 @@
+import { Bgcolor } from "./darkModeColor";
+
 export const darkTheme = {
   color: "#ffffff",
   bgColor: "#17171A",
@@ -16,6 +18,7 @@ export const darkTheme = {
   PlusButtonbg : "#636363",
 };
 
+
 export const lightTheme = {
   color: "#000000",
   bgColor: "#E2E2E6", 
@@ -31,7 +34,7 @@ export const lightTheme = {
   todocreatebg: "#E5BA73",
   containstatusbg: "#C58940",
   containboradbg : "#FAF8F1",
-  fontWeight: "600",
+  fontWeight: "700",
   fontColor : "#ffffff",
   PlusButtonbg : "#DB5E32",
 };

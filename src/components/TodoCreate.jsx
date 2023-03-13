@@ -10,24 +10,24 @@ const Todocreate = styled.div`
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
-  background-color:${(props)=> props.theme.todocreatebg};
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
+  background-color: ${(props) => props.theme.todocreatebg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 const Title = styled.h1`
   align-items: center;
   text-align: center;
   padding-bottom: 20px;
   font-size: 35px;
-  font-weight:${(props)=>props.theme.fontWeight};
+  font-weight: ${(props) => props.theme.fontWeight};
 `;
 const Form = styled.form`
   padding-bottom: 20px;
-  display:flex;
-  width:50%;
-  padding-left:45px;
+  display: flex;
+  width: 50%;
+  padding-left: 45px;
 `;
 const ListAdd = styled.input`
   position: flex;
@@ -42,9 +42,9 @@ const Plus = styled.button`
   font-size: 34px;
   margin-left: 5px;
   cursor: pointer;
-  background-color:${(props)=> props.theme.PlusButtonbg};
-  border-style:none;
-  color:white;
+  background-color: ${(props) => props.theme.PlusButtonbg};
+  border-style: none;
+  color: white;
 `;
 
 function TodoCreate() {
@@ -84,10 +84,9 @@ function TodoCreate() {
           />
 
           <Plus>
-            <IoIosAdd onClick={onSubmit}/>
+            <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-    
       </Todocreate>
     </>
   );
