@@ -87,6 +87,7 @@ export const Modal = (props) => {
 
   const openModalHandler = () => {
     setIsOpen(!isOpen);
+    props.getDragMode(isOpen);
     setValue("");
   };
 
