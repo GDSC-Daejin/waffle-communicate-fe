@@ -7,15 +7,11 @@ import Modal from "./Modal";
 const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
-
-  background-color: ${(props) => props.theme.container_borad_bg};
 `;
 
 const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
-
-  background-color: ${(props) => props.theme.container_borad_bg};
 `;
 
 const Context = styled.div`
