@@ -26,39 +26,49 @@ export const ModalView = styled.div.attrs((props) => ({
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
-  background-color: ${(props) => props.theme.contextbg};
-  border-radius: 30px;
-  color: ${(props) => props.theme.contexttx};
+  background-color: ${(props) => props.theme.Modal_bg};
+  color: black;
+  font-weight:${(props)=>props.theme.fontWeight};
+  border: 3px solid ${(props)=>props.theme.Modal_border_bg};
 `;
 
 const Navbar = styled.div`
+  background-color:${(props)=>props.theme.Modal_Navbar_bg};
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 5px 12px;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid ${(props)=> props.theme.Modal_border_bg};
 `;
 const Title = styled.div`
   margin-left: 5%;
 `;
 const Exit = styled.div`
-  margin-right: 5%;
-  font-size: 1.2em;
+  margin-right: 2%;
+  font-size: 34px;
   cursor: pointer;
   &: hover {
-    background-color: skyblue;
-    color: blue;
+    color: b  lue;
   }
+  color:grey;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 `;
 
-const ModalBody = styled.div``;
+
+const ModalBody = styled.div`
+  margin-top:3px;
+  diplay:flex;
+  
+`;
 const Modalfooter = styled.div`
+  display:flex;
+  justify-content:center;
   padding: 5% 0%;
 `;
 
 const Form = styled.form`
-  margin-top: 10px;
+
 `;
 const ListAdd = styled.input`
   position: flex;
