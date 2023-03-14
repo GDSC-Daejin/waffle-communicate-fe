@@ -28,6 +28,7 @@
     //orange color
     orange1: "#EE6C4D",
     orange2: "#B85C38",
+    orange3: "#FFD466",
 
     //blue color
     blue1: "#ADE7F7",

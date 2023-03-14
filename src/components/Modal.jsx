@@ -17,6 +17,7 @@ export const ModalBackdrop = styled.div`
   background: rgba(255, 255, 255, 0.5);
   z-index: 3;
   cursor: default;
+  font-weight:${(props)=>props.theme.fontWeight};
 `;
 export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
@@ -29,6 +30,8 @@ export const ModalView = styled.div.attrs((props) => ({
   background-color: ${(props) => props.theme.contextbg};
   border-radius: 30px;
   color: ${(props) => props.theme.contexttx};
+  background-color: ${(props)=> props.theme.Modal_bg};
+  color:${(props)=>props.theme.color};
 `;
 
 const Navbar = styled.div`
