@@ -22,7 +22,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 25%;
+  height: 30 %;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
@@ -52,10 +52,10 @@ const Exit = styled.div`
   }
 `;
 
-const ModalBody = styled.div`
-  padding-bottom: 5%;
+const ModalBody = styled.div``;
+const Modalfooter = styled.div`
+  padding: 5% 0%;
 `;
-const Modalfooter = styled.div``;
 
 const Form = styled.form`
   margin-top: 10px;
@@ -114,6 +114,7 @@ export const Modal = (props) => {
       type: "COMPLETE",
       id: props.id,
     });
+    props.getDragMode(isOpen);
   };
   return (
     <>
