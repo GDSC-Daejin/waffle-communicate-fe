@@ -17,7 +17,9 @@ export const darkTheme = {
   fontColor: Color.black3,
   fontWeight: "700",
   Plus_Button_bg : Color.green3,
-  Modal_bg : Color.black9,
+  Modal_bg: Color.white2,
+  Modal_body: Color.grey8,
+  Modal_Navbar_bg: Color.white4,
 };
 
 
@@ -39,5 +41,7 @@ export const lightTheme = {
   fontWeight: "700",
   fontColor : Color.white1,
   Plus_Button_bg : Color.orange1,
-  Modal_bg : Color.orange3,
+  Modal_bg: Color.white2,
+  Modal_body: Color.grey3,
+  Modal_Navbar_bg: Color.white4,
 };
