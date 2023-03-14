@@ -14,8 +14,6 @@ const Wrapper_uncomplete = styled.div`
 const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
-  border-left: 1px solid;
-  background-color: ${(props) => props.theme.container_borad_bg};
 `;
 
 const Context = styled.div`
