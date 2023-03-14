@@ -7,17 +7,18 @@ const Header = styled.div`
   padding: 10px;
   display : flex;
   border: 2px solid;
-  background-color: ${(props)=> props.theme.Headerbg};
+  background-color: ${(props)=> props.theme.Header_bg};
   font-weight:${(props)=>props.theme.fontWeight};
-
+  justify-content:space-between;
 `;
 
 const Brand = styled.h1`
   font-size: 29px;
 `;
 const Mode_div = styled.div `
-  padding-right:10px;
+  paddin-right:12px;
 `;
+
 const Mode = styled.button`
   border: 1px #aaaaaa;
   padding: ${(props) => props.theme.mode_padding};
