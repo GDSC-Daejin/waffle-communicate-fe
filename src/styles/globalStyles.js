@@ -16,7 +16,7 @@ export default createGlobalStyle`
     color: ${(props) => props.theme.color};
     position:relative;
     display: block;
-    width:90%;
+    width:80%;
     height: 100%;
     line-height: 1.5;
     margin: 0 auto;

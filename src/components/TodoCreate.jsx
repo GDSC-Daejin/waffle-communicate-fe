@@ -10,7 +10,7 @@ const Todocreate = styled.div`
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
-  background-color: ${(props) => props.theme.todocreatebg};
+  background-color: ${(props) => props.theme.todo_create_bg};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,7 @@ const Plus = styled.button`
   font-size: 34px;
   margin-left: 5px;
   cursor: pointer;
-  background-color: ${(props) => props.theme.PlusButtonbg};
+  background-color: ${(props) => props.theme.Plus_Button_bg};
   border-style: none;
   color: white;
 `;
