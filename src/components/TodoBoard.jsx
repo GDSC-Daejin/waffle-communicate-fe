@@ -7,7 +7,7 @@ const Container_status = styled.div`
   display: flex;
   width: 100%;
   border: 3px solid;
-  background-color: ${(props) => props.theme.containstatusbg};
+  background-color: ${(props) => props.theme.contain_status_bg};
 `;
 const Wrapper_uncomplete = styled.div`
   border-right: 1px solid;
@@ -29,7 +29,7 @@ const Container_board = styled.div`
   height: 150%;
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
-  background-color: ${(props) => props.theme.todocreatebg};
+  background-color: ${(props) => props.theme.todo_create_bg};
   border: 1px solid;
 `;
 function TodoBoard() {
