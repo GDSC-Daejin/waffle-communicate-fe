@@ -28,6 +28,7 @@
     //orange color
     orange1: "#EE6C4D",
     orange2: "#B85C38",
+    orange3: "#FFD466",
 
     //blue color
     blue1: "#ADE7F7",
@@ -37,6 +38,9 @@
     blue5: "#7286D3",
     blue6: "#3A98B9",
     blue7: "#7BCEEF",
+    blue8: "#270BDE",
+    blue9: "#3F55E5",
+
 
     //white color
     white1:"#ffffff",
@@ -65,15 +69,24 @@
     yellow7: "#E3CAA5",
     yellow8: "#AD8B73",
     yellow9: "#FFF8E6",
+    yellow10: "#FFD466",
+
 
     //brown color
     brown1: "#5C3D2E",
     brown2: "#532E1C",
+    brown3: "#6D5A2B",
+    brown4: "#A9976D",
 
     //green color
     green1: "#A0D468",
     green2: "#8CC051",
     green3: "#64A41C",
+
+    purple: "#5B46E7",
+
+    red1: "#E9573E",
+    red2: "#E12403",
   }
 
   

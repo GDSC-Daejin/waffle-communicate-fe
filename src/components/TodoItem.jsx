@@ -7,6 +7,8 @@ import Modal from "./Modal";
 const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
+  border-right: 1px solid;
+  background-color: ${(props) => props.theme.container_borad_bg};
 `;
 
 const Wrapper_complete = styled.div`
