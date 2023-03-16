@@ -20,9 +20,9 @@ function App() {
         <GlobalStyles />
         <TodoProvider>
           <Body />
+          <Footer />
         </TodoProvider>
       </ThemeProvider>
-      <Footer />
     </div>
   );
 }
