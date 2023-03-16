@@ -4,14 +4,12 @@ import { useTodoDispatch } from "../Context";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 
-const Wrapper_uncomplete = styled.div`
+export const Wrapper_uncomplete = styled.div`
   width: 100%;
   grid-column-start: 1;
-  border-right: 1px solid;
-  background-color: ${(props) => props.theme.container_borad_bg};
 `;
 
-const Wrapper_complete = styled.div`
+export const Wrapper_complete = styled.div`
   width: 100%;
   grid-column-start: 2;
 `;
