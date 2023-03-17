@@ -1,4 +1,5 @@
-import {Color} from "./color"
+
+import { Color } from "./color";
 
 export const darkTheme = {
   //color: "#ffffff",
@@ -20,12 +21,12 @@ export const darkTheme = {
   Modal_bg: Color.white2,
   Modal_body: Color.grey8,
   Modal_Navbar_bg: Color.white4,
-};
 
+};
 
 export const lightTheme = {
   color: Color.black3,
-  bgColor: Color.yellow9, 
+  bgColor: Color.yellow9,
   border: "2px solid #505050",
   boxcolor: Color.blue1,
   mode_rotate: "rotateZ(45deg)",

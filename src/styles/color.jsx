@@ -41,6 +41,7 @@
     blue8: "#270BDE",
     blue9: "#3F55E5",
 
+
     //white color
     white1:"#ffffff",
     white2:"#E6E6E6",
@@ -69,6 +70,7 @@
     yellow8: "#AD8B73",
     yellow9: "#FFF8E6",
     yellow10: "#FFD466",
+
 
     //brown color
     brown1: "#5C3D2E",
