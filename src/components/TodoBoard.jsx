@@ -12,7 +12,7 @@ const Container_status = styled.div`
 `;
 /*
 const Wrapper_uncomplete = styled.div`
-  border-right: 1px solid;
+  border-right: 2px solid;
   width: 50%;
 `;
 const Wrapper_complete = styled.div`

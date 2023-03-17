@@ -5,6 +5,8 @@ import { darkTheme, lightTheme } from "./styles/theme";
 import Navbar from "./layout/navbar";
 import Body from "./layout/body";
 import { TodoProvider } from "./TodoContext.jsx";
+import footer from "./layout/footer";
+import Footer from "./layout/footer";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -18,6 +20,7 @@ function App() {
         <GlobalStyles />
         <TodoProvider>
           <Body />
+          <Footer />
         </TodoProvider>
       </ThemeProvider>
     </div>
