@@ -16,7 +16,7 @@ const Brand = styled.h1`
   font-size: 29px;
 `;
 const Mode_div = styled.div `
-  paddin-right:12px;
+ 
 `;
 
 const Mode = styled.button`

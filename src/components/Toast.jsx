@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { GoAlert } from "react-icons/go";
 
 const Alarm = styled.div`
-  background-color: ${(props) => props.theme.orange2};
-  border: 1px solid ${(props) => props.theme.orange1};
+  background-color: ${(props) => props.theme.bgColor};
+  border: 1px solid ${(props) => props.theme.bgColor};
   border-radius: 10px;
   box-shadow: 0 0.5rem 1rem reg(0 0 0 /15%);
-  height: 40px;
-  width: 250px;
   padding: 5px;
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
-  color: ${(props) => props.theme.black1};
+  color: white;
   display: flex;
+  position: fixed;
   align-items: center;
   justify-content: center;
 `;
 
-function TodoToast(props) {
+function Toast(props) {
+  let err;
   useEffect(() => {
     let timer = setTimeout(() => {
       props.setToastState(false);
@@ -30,12 +30,36 @@ function TodoToast(props) {
     };
   }, []);
 
-  return (
-    <Alarm>
-      <GoAlert></GoAlert>
-      <p>입력하지 않은 칸이 있습니다.</p>
-    </Alarm>
-  );
+  const Alert = () => {
+    switch (props.code) {
+      case "repeated":
+        err = "이미 존재하는 제목입니다.";
+        return (
+          <>
+            <GoAlert />
+            <p>{err}</p>
+          </>
+        );
+
+      case "none":
+        err = "내용을 입력해주세요.";
+        return (
+          <>
+            <GoAlert />
+            <p>{err}</p>
+          </>
+        );
+
+      default:
+        return (
+          <>
+          error
+          </>
+        );
+    }
+  };
+
+  return <Alarm>{Alert()}</Alarm>;
 }
 
-export default TodoToast;
+export default Toast;

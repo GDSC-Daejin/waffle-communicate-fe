@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useTodoDispatch } from "../Context";
-import TodoToast from "./TodoToast";
+import Toast from "./Toast";
 
 export const ModalBackdrop = styled.div`
   width: 100%;

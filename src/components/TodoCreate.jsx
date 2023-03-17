@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useTodoDispatch, useTodoNextId } from "../Context";
 import { IoIosAdd } from "react-icons/io";
+import Toast from "./Toast";
 
 const Todocreate = styled.div`
   margin-top: 5%;
@@ -48,7 +49,7 @@ const Plus = styled.button`
 `;
 
 function TodoCreate() {
-  const [open, setOpen] = useState(false);
+  let [toastState, setToastState] = useState(false);
   const [value, setValue] = useState("");
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
@@ -56,8 +57,11 @@ function TodoCreate() {
   const onChange = (e) => setValue(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!value || !value.replace(/\s/g, "").length)
-      return alert("내용을 입력해주세요.");
+    if (!value || !value.replace(/\s/g, "").length) {
+      //return alert("내용을 입력해주세요.");
+      setToastState(true);
+      return
+    }
 
     dispatch({
       type: "CREATE",
@@ -69,6 +73,7 @@ function TodoCreate() {
     });
     nextId.current += 1;
     setValue("");
+    return false;
   };
 
   return (
@@ -87,6 +92,7 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
+        {toastState === true ? <Toast setToastState={setToastState} code="none"  /> : null}
       </Todocreate>
     </>
   );

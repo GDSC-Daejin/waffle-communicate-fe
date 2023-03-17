@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { useTodoDispatch, useTodoState } from "../Context";
-import { Wrapper_complete, Wrapper_uncomplete } from "./TodoItem";
+//import { Wrapper_complete, Wrapper_uncomplete } from "./TodoItem";
 
 const Container_status = styled.div`
   display: flex;
@@ -10,20 +10,21 @@ const Container_status = styled.div`
   border: 3px solid;
   background-color: ${(props) => props.theme.contain_status_bg};
 `;
-/*
+
 const Wrapper_uncomplete = styled.div`
   border-right: 2px solid;
   width: 50%;
 `;
 const Wrapper_complete = styled.div`
   width: 50%;
-`;*/
+`;
 const Status = styled.h1`
   font-size: 30px;
   padding: 2% 0px;
   font-weight: bold;
   padding-left: 10px;
   border: 1px solid;
+  
 `;
 const Container_board = styled.div`
   display: grid;
