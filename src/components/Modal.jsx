@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   right: 0;
   display: flex;
-  flex-flow: row wrep;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
@@ -23,7 +23,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 30 %;
+  height: 30%;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
@@ -47,7 +47,7 @@ const Exit = styled.div`
   margin-right: 2%;
   font-size: 34px;
   cursor: pointer;
-  &: hover {
+  &:hover {
     color: blue;
   }
   color: grey;
@@ -58,7 +58,7 @@ const Exit = styled.div`
 
 const ModalBody = styled.div`
   margin-top: 5%;
-  diplay: flex;
+  display: flex;
 `;
 const Modalfooter = styled.div`
   display: flex;
