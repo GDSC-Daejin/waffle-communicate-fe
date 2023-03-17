@@ -49,7 +49,8 @@ const Plus = styled.button`
 `;
 
 function TodoCreate() {
-  let [toastState, setToastState] = useState(false);
+  const [toastState, setToastState] = useState(false);
+  const [code, setcode] = useState("");
   const [value, setValue] = useState("");
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
@@ -60,9 +61,11 @@ function TodoCreate() {
     if (!value || !value.replace(/\s/g, "").length) {
       //return alert("내용을 입력해주세요.");
       setToastState(true);
+      setcode("empty")
       return
     }
-
+    setToastState(true);
+    setcode("success")
     dispatch({
       type: "CREATE",
       todo: {
@@ -73,7 +76,7 @@ function TodoCreate() {
     });
     nextId.current += 1;
     setValue("");
-    return false;
+    return ;
   };
 
   return (
@@ -92,7 +95,7 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-        {toastState === true ? <Toast setToastState={setToastState} code="none"  /> : null}
+        {toastState === true ? <Toast setToastState={setToastState} code={code}  /> : null}
       </Todocreate>
     </>
   );

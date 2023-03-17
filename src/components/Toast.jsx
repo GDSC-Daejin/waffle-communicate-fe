@@ -41,7 +41,7 @@ function Toast(props) {
           </>
         );
 
-      case "none":
+      case "empty":
         err = "내용을 입력해주세요.";
         return (
           <>
@@ -49,7 +49,14 @@ function Toast(props) {
             <p>{err}</p>
           </>
         );
-
+      case "success":
+        err = "완료되었습니다.";
+        return (
+          <>
+            <GoAlert />
+            <p>{err}</p>
+          </>
+        );
       default:
         return (
           <>
