@@ -13,7 +13,9 @@ function Footer (){
     <>
       <Logos>
           <img src={Logo} width="350" alt="GDSC로고" />
+          
       </Logos>
+      <p>Donney & James</p>
     </>
   );
 }
