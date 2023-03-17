@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useTodoDispatch } from "../Context";
+import TodoToast from "./TodoToast";
 
 export const ModalBackdrop = styled.div`
   width: 100%;
@@ -93,6 +94,7 @@ export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
   const dispatch = useTodoDispatch();
+  const [toastState, setToastState] = useState(false);
 
   const openModalHandler = () => {
     setIsOpen(!isOpen);
@@ -124,6 +126,16 @@ export const Modal = (props) => {
       id: props.id,
     });
   };
+
+  const checkInputValues = () => {
+    if(inputData.userName === ""){
+      setUserInputScreen(0);
+      setToastState(true);
+      return false;
+    }
+    return true;
+  }
+
   return (
     <>
       <TodoButton onClick={openModalHandler}>
