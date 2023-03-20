@@ -26,17 +26,16 @@ const Context = styled.div`
 `;
 
 const TodoButton = styled.button`
-  padding: 1% 1%;
-  margin-right: 10px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  position: relative;
   background-color: ${(props) => props.theme.buttoncolor};
-  font-size: 30px;
+  font-size: 35px;
   border: 3px solid;
   border-radius: 10px;
   border-style: outset;
-  width: 10%;
+  position:relative;
+  left:2px;
+  margin:2px;
 `;
 
 function TodoItem({ id, done, text }) {

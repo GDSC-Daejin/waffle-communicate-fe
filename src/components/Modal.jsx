@@ -66,9 +66,9 @@ const Modalfooter = styled.div`
   padding: 5% 0%;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+`;
 const ListAdd = styled.input`
-  position: flex;
   width: 70%;
   margin-bottom: 10px;
   margin-right: 1%;
@@ -76,17 +76,16 @@ const ListAdd = styled.input`
   height: 50px;
 `;
 const TodoButton = styled.button`
-  padding: 1% 1%;
-  margin-right: 10px;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
-  position: relative;
   background-color: ${(props) => props.theme.buttoncolor};
-  font-size: 30px;
   border: 3px solid;
   border-radius: 10px;
   border-style: outset;
+  cursor:pointer;
+  font-size: 35px;
+  margin:2px;
 `;
+
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
