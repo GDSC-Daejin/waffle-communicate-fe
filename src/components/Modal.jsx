@@ -1,7 +1,8 @@
 import { React, useState } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { useTodoDispatch } from "../Context";
+import { useTodoDispatch, useTodoState } from "../Context";
+import Toast from "./Toast";
 
 export const ModalBackdrop = styled.div`
   width: 100%;
@@ -89,25 +90,48 @@ const TodoButton = styled.button`
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
-  const dispatch = useTodoDispatch();
   const [toastState, setToastState] = useState(false);
+  const [code, setcode] = useState("");
 
+  const dispatch = useTodoDispatch();
+  const todos = useTodoState();
+
+  let exitCode = 0;
   const openModalHandler = () => {
     setIsOpen(!isOpen);
     props.getDragMode(isOpen);
+    //setToastState(false);
     setValue("");
   };
 
   const onChange = (e) => setValue(e.target.value);
+  const checker = () => {
+    if (!value || !value.replace(/\s/g, "").length) {
+      setcode("empty");
+      exitCode = -1;
+    }
+    todos.map((todo) => {
+      if (todo.text == value) {
+        setcode("repeated");
+        exitCode = -1;
+      }
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!value || !value.replace(/\s/g, "").length)
-      return alert("내용을 입력해주세요.");
+    checker();
+    if (exitCode === -1) {
+      setToastState(true);
+      return setValue("");
+    }
     dispatch({
       type: "EDIT",
       id: props.id,
       text: value,
     });
+    setToastState(true);
+    setcode("success");
     setValue("");
   };
   const onRemove = () => {
@@ -123,6 +147,15 @@ export const Modal = (props) => {
     });
     props.getDragMode(isOpen);
   };
+  const Alert = () => {
+    return (
+      <>
+        {toastState === true ? (
+          <Toast setToastState={setToastState} code={code} />
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <>
@@ -137,6 +170,7 @@ export const Modal = (props) => {
               <Exit onClick={openModalHandler}>&times;</Exit>
             </Navbar>
             <ModalBody>
+              <Alert />
               <Form onSubmit={onSubmit}>
                 <ListAdd
                   autoFocus

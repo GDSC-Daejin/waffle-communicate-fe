@@ -59,26 +59,26 @@ function TodoCreate() {
 
   let exitCode = 0;
   const onChange = (e) => setValue(e.target.value);
-  const onSubmit = (e) => {
-    e.preventDefault();
-
+  const checker = () => {
     if (!value || !value.replace(/\s/g, "").length) {
-      setToastState(true);
       setcode("empty");
-      return;
+      exitCode = -1;
     }
     todos.map((todo) => {
       if (todo.text == value) {
-        setToastState(true);
         setcode("repeated");
-        exitCode = 1;
-        return;
+        exitCode = -1;
       }
     });
-    if (exitCode === 1) return setValue("");
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    checker();
+    if (exitCode === -1) {
+      setToastState(true);
+      return setValue("");
+    }
 
-    setToastState(true);
-    setcode("success");
     dispatch({
       type: "CREATE",
       todo: {
@@ -87,11 +87,21 @@ function TodoCreate() {
         done: false,
       },
     });
+    setToastState(true);
+    setcode("success");
     nextId.current += 1;
     setValue("");
     return;
   };
-
+  const Alert = () => {
+    return (
+      <>
+        {toastState === true ? (
+          <Toast setToastState={setToastState} code={code} />
+        ) : null}
+      </>
+    );
+  };
   return (
     <>
       <Todocreate>
@@ -108,9 +118,7 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-        {toastState === true ? (
-          <Toast setToastState={setToastState} code={code} />
-        ) : null}
+        <Alert />
       </Todocreate>
     </>
   );
