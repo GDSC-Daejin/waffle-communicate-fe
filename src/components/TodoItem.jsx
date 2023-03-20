@@ -52,7 +52,6 @@ function TodoItem({ id, done, text }) {
     });
   };
   const Drag_Started = (e, id) => {
-    //console.log("Drag has started", id);
     e.dataTransfer.setData("drag_startID", id);
   };
 

@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { useTodoDispatch } from "../Context";
-import TodoToast from "./TodoToast";
+import { useTodoDispatch, useTodoState } from "../Context";
+import Toast from "./Toast";
 
 export const ModalBackdrop = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   right: 0;
   display: flex;
-  flex-flow: row wrep;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
@@ -23,7 +23,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 30 %;
+  height: 30%;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
@@ -47,7 +47,7 @@ const Exit = styled.div`
   margin-right: 2%;
   font-size: 34px;
   cursor: pointer;
-  &: hover {
+  &:hover {
     color: blue;
   }
   color: grey;
@@ -58,7 +58,7 @@ const Exit = styled.div`
 
 const ModalBody = styled.div`
   margin-top: 5%;
-  diplay: flex;
+  display: flex;
 `;
 const Modalfooter = styled.div`
   display: flex;
@@ -89,25 +89,48 @@ const TodoButton = styled.button`
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState("");
-  const dispatch = useTodoDispatch();
   const [toastState, setToastState] = useState(false);
+  const [code, setcode] = useState("");
 
+  const dispatch = useTodoDispatch();
+  const todos = useTodoState();
+
+  let exitCode = 0;
   const openModalHandler = () => {
     setIsOpen(!isOpen);
     props.getDragMode(isOpen);
+    //setToastState(false);
     setValue("");
   };
 
   const onChange = (e) => setValue(e.target.value);
+  const checker = () => {
+    if (!value || !value.replace(/\s/g, "").length) {
+      setcode("empty");
+      exitCode = -1;
+    }
+    todos.map((todo) => {
+      if (todo.text == value) {
+        setcode("repeated");
+        exitCode = -1;
+      }
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!value || !value.replace(/\s/g, "").length)
-      return alert("내용을 입력해주세요.");
+    checker();
+    if (exitCode === -1) {
+      setToastState(true);
+      return setValue("");
+    }
     dispatch({
       type: "EDIT",
       id: props.id,
       text: value,
     });
+    setToastState(true);
+    setcode("success");
     setValue("");
   };
   const onRemove = () => {
@@ -123,15 +146,15 @@ export const Modal = (props) => {
     });
     props.getDragMode(isOpen);
   };
-
-  const checkInputValues = () => {
-    if(inputData.userName === ""){
-      setUserInputScreen(0);
-      setToastState(true);
-      return false;
-    }
-    return true;
-  }
+  const Alert = () => {
+    return (
+      <>
+        {toastState === true ? (
+          <Toast setToastState={setToastState} code={code} />
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <>
@@ -146,6 +169,7 @@ export const Modal = (props) => {
               <Exit onClick={openModalHandler}>&times;</Exit>
             </Navbar>
             <ModalBody>
+              <Alert />
               <Form onSubmit={onSubmit}>
                 <ListAdd
                   autoFocus
