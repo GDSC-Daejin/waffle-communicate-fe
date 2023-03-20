@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   right: 0;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row wrep;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
@@ -23,7 +23,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 30%;
+  height: 30 %;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
@@ -58,7 +58,6 @@ const Exit = styled.div`
 
 const ModalBody = styled.div`
   margin-top: 5%;
-  display: flex;
 `;
 const Modalfooter = styled.div`
   display: flex;
@@ -85,6 +84,7 @@ const TodoButton = styled.button`
   font-size: 35px;
   margin:2px;
 `;
+
 
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);

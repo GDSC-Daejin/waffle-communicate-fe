@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./img/Logo.png";
+import Logo from "../assets/Logo.png";
 import styled from "styled-components";
 
 const Logos = styled.div`
