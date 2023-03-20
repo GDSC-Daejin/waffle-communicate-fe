@@ -19,7 +19,7 @@ const Alarm = styled.div`
 `;
 
 function Toast(props) {
-  let err;
+  let msg;
   useEffect(() => {
     let timer = setTimeout(() => {
       props.setToastState(false);
@@ -33,36 +33,32 @@ function Toast(props) {
   const Alert = () => {
     switch (props.code) {
       case "repeated":
-        err = "이미 존재하는 제목입니다.";
+        msg = "이미 존재하는 제목입니다.";
         return (
           <>
             <GoAlert />
-            <p>{err}</p>
+            <p>{msg}</p>
           </>
         );
 
       case "empty":
-        err = "내용을 입력해주세요.";
+        msg = "내용을 입력해주세요.";
         return (
           <>
             <GoAlert />
-            <p>{err}</p>
+            <p>{msg}</p>
           </>
         );
       case "success":
-        err = "완료되었습니다.";
+        msg = "완료되었습니다.";
         return (
           <>
             <GoAlert />
-            <p>{err}</p>
+            <p>{msg}</p>
           </>
         );
       default:
-        return (
-          <>
-          error
-          </>
-        );
+        return <>default</>;
     }
   };
 
