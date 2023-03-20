@@ -124,15 +124,6 @@ export const Modal = (props) => {
     props.getDragMode(isOpen);
   };
 
-  const checkInputValues = () => {
-    if(inputData.userName === ""){
-      setUserInputScreen(0);
-      setToastState(true);
-      return false;
-    }
-    return true;
-  }
-
   return (
     <>
       <TodoButton onClick={openModalHandler}>

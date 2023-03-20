@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useTodoDispatch, useTodoNextId } from "../Context";
+import { useTodoDispatch, useTodoNextId, useTodoState } from "../Context";
 import { IoIosAdd } from "react-icons/io";
 import Toast from "./Toast";
 
@@ -52,20 +52,33 @@ function TodoCreate() {
   const [toastState, setToastState] = useState(false);
   const [code, setcode] = useState("");
   const [value, setValue] = useState("");
+
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
+  const todos = useTodoState();
 
+  let exitCode = 0;
   const onChange = (e) => setValue(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (!value || !value.replace(/\s/g, "").length) {
-      //return alert("내용을 입력해주세요.");
       setToastState(true);
-      setcode("empty")
-      return
+      setcode("empty");
+      return;
     }
+    todos.map((todo) => {
+      if (todo.text == value) {
+        setToastState(true);
+        setcode("repeated");
+        exitCode = 1;
+        return;
+      }
+    });
+    if (exitCode === 1) return setValue("");
+
     setToastState(true);
-    setcode("success")
+    setcode("success");
     dispatch({
       type: "CREATE",
       todo: {
@@ -76,7 +89,7 @@ function TodoCreate() {
     });
     nextId.current += 1;
     setValue("");
-    return ;
+    return;
   };
 
   return (
@@ -95,7 +108,9 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-        {toastState === true ? <Toast setToastState={setToastState} code={code}  /> : null}
+        {toastState === true ? (
+          <Toast setToastState={setToastState} code={code} />
+        ) : null}
       </Todocreate>
     </>
   );

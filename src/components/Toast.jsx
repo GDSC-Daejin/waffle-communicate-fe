@@ -33,7 +33,7 @@ function Toast(props) {
   const Alert = () => {
     switch (props.code) {
       case "repeated":
-        msg = "이미 존재하는 제목입니다.";
+        msg = "이미 존재하는 내용입니다.";
         return (
           <>
             <GoAlert />
@@ -57,8 +57,8 @@ function Toast(props) {
             <p>{msg}</p>
           </>
         );
-      default:
-        return <>default</>;
+      /*default:
+        return <>default</>;*/
     }
   };
 
