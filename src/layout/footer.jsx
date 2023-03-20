@@ -10,8 +10,6 @@ const Logos = styled.div`
   padding:10px;
 `;
 
-const divs = styled.div`
-`;
 
 function Footer (){
   return(
