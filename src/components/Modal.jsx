@@ -12,7 +12,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   right: 0;
   display: flex;
-  flex-flow: row wrep;
+  flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
