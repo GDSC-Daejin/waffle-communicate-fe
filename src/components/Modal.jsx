@@ -23,7 +23,7 @@ export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
   width: 50%;
-  height: 30 %;
+  height: 30%;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;
