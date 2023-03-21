@@ -104,6 +104,7 @@ function TodoCreate() {
   };
   return (
     <>
+      <Alert />
       <Todocreate>
         <Title>To do List</Title>
         <Form onSubmit={onSubmit}>
@@ -112,8 +113,8 @@ function TodoCreate() {
             onChange={onChange}
             value={value}
             placeholder="할 일을 입력 후, Enter 를 누르세요"
+            disabled={toastState}
           />
-
           <Plus>
             <IoIosAdd onClick={onSubmit} />
           </Plus>

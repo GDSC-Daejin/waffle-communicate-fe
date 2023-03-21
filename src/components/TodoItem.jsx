@@ -1,7 +1,7 @@
-import React, { Component, useState } from "react";
-import styled, { css } from "styled-components";
+import React, { useState } from "react";
+import styled from "styled-components";
 import { useTodoDispatch } from "../Context";
-import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 
 export const Wrapper_uncomplete = styled.div`
@@ -33,9 +33,9 @@ const TodoButton = styled.button`
   border: 3px solid;
   border-radius: 10px;
   border-style: outset;
-  position:relative;
-  left:2px;
-  margin:2px;
+  position: relative;
+  left: 2px;
+  margin: 2px;
 `;
 
 function TodoItem({ id, done, text }) {
@@ -50,6 +50,7 @@ function TodoItem({ id, done, text }) {
       type: "REMOVE",
       id,
     });
+    alert("삭제되었습니다.");
   };
   const Drag_Started = (e, id) => {
     e.dataTransfer.setData("drag_startID", id);

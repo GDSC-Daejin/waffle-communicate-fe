@@ -43,12 +43,14 @@ const Navbar = styled.div`
 const Title = styled.div`
   margin-left: 5%;
 `;
-const Exit = styled.div`
-  margin-right: 2%;
+const Exit = styled.button`
+  margin-right: 5%;
   font-size: 34px;
   cursor: pointer;
+  all: unset;
   &:hover {
     color: blue;
+    cursor: pointer;
   }
   color: grey;
   display: flex;
@@ -65,8 +67,7 @@ const Modalfooter = styled.div`
   padding: 5% 0%;
 `;
 
-const Form = styled.form`
-`;
+const Form = styled.form``;
 const ListAdd = styled.input`
   width: 70%;
   margin-bottom: 10px;
@@ -80,11 +81,10 @@ const TodoButton = styled.button`
   border: 3px solid;
   border-radius: 10px;
   border-style: outset;
-  cursor:pointer;
+  cursor: pointer;
   font-size: 35px;
-  margin:2px;
+  margin: 2px;
 `;
-
 
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -138,12 +138,14 @@ export const Modal = (props) => {
       type: "REMOVE",
       id: props.id,
     });
+    alert("성공적으로 제거되었습니다.");
   };
   const onToggle = () => {
     dispatch({
       type: "COMPLETE",
       id: props.id,
     });
+    alert("와 축하합니다. 할 일을 끝냈네요~");
     props.getDragMode(isOpen);
   };
   const Alert = () => {
@@ -161,21 +163,24 @@ export const Modal = (props) => {
       <TodoButton onClick={openModalHandler}>
         <FiEdit />
       </TodoButton>
+      <Alert />
       {isOpen ? (
         <ModalBackdrop>
           <ModalView>
             <Navbar>
               <Title>EDIT</Title>
-              <Exit onClick={openModalHandler}>&times;</Exit>
+              <Exit onClick={openModalHandler} disabled={toastState}>
+                &times;
+              </Exit>
             </Navbar>
             <ModalBody>
-              <Alert />
               <Form onSubmit={onSubmit}>
                 <ListAdd
                   autoFocus
                   onChange={onChange}
                   value={value}
                   placeholder={props.text}
+                  disabled={toastState}
                 />
                 <TodoButton onClick={onSubmit}>수정하기</TodoButton>
               </Form>

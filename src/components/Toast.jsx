@@ -1,11 +1,28 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 import { GoAlert } from "react-icons/go";
+
+const slideIn = keyframes`
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+`;
+const slideOut = keyframes`
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(150%);
+  }
+`;
 
 const Alarm = styled.div`
   background-color: ${(props) => props.theme.bgColor};
   border: 1px solid ${(props) => props.theme.bgColor};
-  border-radius: 10px;
+
   box-shadow: 0 0.5rem 1rem reg(0 0 0 /15%);
   padding: 5px;
   text-align: center;
@@ -13,13 +30,21 @@ const Alarm = styled.div`
   font-weight: bold;
   color: white;
   display: flex;
-  position: fixed;
+
   align-items: center;
   justify-content: center;
+  position: fixed;
+  z-index: 4;
+  top: 10%;
+  right: 0px;
+
+  animation: ${slideIn} 1s ease-in-out 0s 1 normal forwards,
+    ${slideOut} 1s ease-in-out 2s 1 normal forwards;
 `;
 
 function Toast(props) {
   let msg;
+
   useEffect(() => {
     let timer = setTimeout(() => {
       props.setToastState(false);
@@ -42,7 +67,7 @@ function Toast(props) {
         );
 
       case "empty":
-        msg = "내용을 입력해주세요.";
+        msg = "빈 칸입니다. 내용을 입력해주세요.";
         return (
           <>
             <GoAlert />
@@ -50,7 +75,7 @@ function Toast(props) {
           </>
         );
       case "success":
-        msg = "완료되었습니다.";
+        msg = "작업이 완료되었습니다.";
         return (
           <>
             <GoAlert />

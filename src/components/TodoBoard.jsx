@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { useTodoDispatch, useTodoState } from "../Context";
-//import { Wrapper_complete, Wrapper_uncomplete } from "./TodoItem";
+import Toast from "./Toast";
 
 const Container_status = styled.div`
   display: flex;
@@ -24,7 +24,6 @@ const Status = styled.h1`
   font-weight: bold;
   padding-left: 10px;
   border: 1px solid;
-  
 `;
 const Container_board = styled.div`
   display: grid;
@@ -37,15 +36,16 @@ const Container_board = styled.div`
   border: 1px solid;
 `;
 function TodoBoard() {
+  const [toastState, setToastState] = useState(false);
+  const [code, setcode] = useState("");
   const dispatch = useTodoDispatch();
   const DraggingOver = (e) => {
     e.preventDefault();
-    //console.log("Dragging Over now");
   };
   const dragDropped = (e) => {
-    //console.log("You have dropped!");
     const transferedTodoID1 = parseInt(e.dataTransfer.getData("drag_startID"));
-
+    setToastState(true);
+    setcode("success");
     dispatch({
       type: "COMPLETE",
       id: transferedTodoID1,
@@ -56,9 +56,19 @@ function TodoBoard() {
     todos.filter((todo) => !todo.done),
     todos.filter((todo) => todo.done),
   ];
+  const Alert = () => {
+    return (
+      <>
+        {toastState === true ? (
+          <Toast setToastState={setToastState} code={code} />
+        ) : null}
+      </>
+    );
+  };
 
   return (
     <>
+      <Alert />
       <Container_status>
         <Wrapper_uncomplete>
           <Status>UNCOMPLETE ({uncomplete.length})</Status>
