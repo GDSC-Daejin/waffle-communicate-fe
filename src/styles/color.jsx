@@ -70,6 +70,7 @@
     yellow8: "#AD8B73",
     yellow9: "#FFF8E6",
     yellow10: "#FFD466",
+    yellow11: "#FFCE55",
 
 
     //brown color

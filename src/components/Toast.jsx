@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { GoAlert } from "react-icons/go";
+import { GoAlert, GoCheck } from "react-icons/go";
 
 const slideIn = keyframes`
   from {
@@ -20,7 +20,7 @@ const slideOut = keyframes`
 `;
 
 const Alarm = styled.div`
-  background-color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.Alert_bg};
   border: 1px solid ${(props) => props.theme.bgColor};
 
   box-shadow: 0 0.5rem 1rem reg(0 0 0 /15%);
@@ -40,10 +40,27 @@ const Alarm = styled.div`
 
   animation: ${slideIn} 1s ease-in-out 0s 1 normal forwards,
     ${slideOut} 1s ease-in-out 2s 1 normal forwards;
+
+    ${({ isCompleted }) =>
+    isCompleted &&
+    `
+    background-color: ${(props)=>props.theme.Toast_bg};
+    `}
 `;
+
+
+const Icons1 = styled.div` 
+  color:${(props)=> props.theme.Icons_bg};
+`;
+
+const Icons2 = styled.div`
+  color:${(props)=> props.theme.Icons_bg1};
+`;
+
 
 function Toast(props) {
   let msg;
+  const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
     let timer = setTimeout(() => {
@@ -61,7 +78,7 @@ function Toast(props) {
         msg = "이미 존재하는 내용입니다.";
         return (
           <>
-            <GoAlert />
+            <Icons1><GoAlert /></Icons1>
             <p>{msg}</p>
           </>
         );
@@ -70,7 +87,7 @@ function Toast(props) {
         msg = "빈 칸입니다. 내용을 입력해주세요.";
         return (
           <>
-            <GoAlert />
+            <Icons1><GoAlert /></Icons1>
             <p>{msg}</p>
           </>
         );
@@ -78,7 +95,7 @@ function Toast(props) {
         msg = "작업이 완료되었습니다.";
         return (
           <>
-            <GoAlert />
+            <Icons2><GoCheck/></Icons2>
             <p>{msg}</p>
           </>
         );
@@ -87,7 +104,7 @@ function Toast(props) {
     }
   };
 
-  return <Alarm>{Alert()}</Alarm>;
+  return <Alarm isCompleted={isCompleted}>{Alert()}</Alarm>;
 }
 
 export default Toast;
