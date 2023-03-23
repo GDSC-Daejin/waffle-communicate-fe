@@ -3,20 +3,19 @@ import Logo from "../assets/Logo.png";
 import styled from "styled-components";
 
 const Logos = styled.div`
-  display:flex;
+  display: flex;
   justify-content: space-between;
-  font-size:22px;
+  font-size: 22px;
   font-weight: bold;
-  padding:10px;
+  padding: 10px;
 `;
 
-
-function Footer (){
-  return(
+function Footer() {
+  return (
     <>
       <Logos>
-          <img src={Logo} alt="GDSC로고" width="150" height="130"/>
-          <p>Donny & James</p>
+        <img src={Logo} alt="GDSC로고" width="150" height="130" />
+        <p>Donny & James</p>
       </Logos>
     </>
   );
