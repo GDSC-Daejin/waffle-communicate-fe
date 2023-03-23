@@ -32,7 +32,7 @@ export const ModalView = styled.div.attrs((props) => ({
   left: 25%;
   right: 0;
   width: 50%;
-  height: 30 %;
+  height: 30%;
   text-align: center;
   text-decoration: none;
   padding: 0px 0px;

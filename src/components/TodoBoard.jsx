@@ -44,7 +44,7 @@ function TodoBoard() {
   };
   const dragDropped = (e) => {
     const transferedTodoID1 = parseInt(e.dataTransfer.getData("drag_startID"));
-    setToastState(true);
+    //setToastState(true);
     setcode("success");
     dispatch({
       type: "COMPLETE",

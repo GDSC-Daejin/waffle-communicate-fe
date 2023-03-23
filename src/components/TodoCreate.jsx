@@ -76,6 +76,7 @@ function TodoCreate() {
     };
     setToastState(true);
     if (!enteredTitle || !enteredTitle.replace(/\s/g, "").length) {
+      
       setcode("empty");
     } else {
       todos.map((todo) => {
@@ -124,7 +125,6 @@ function TodoCreate() {
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
-        <Alert />
       </Todocreate>
     </>
   );

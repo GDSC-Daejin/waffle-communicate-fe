@@ -21,7 +21,10 @@ export const darkTheme = {
   Modal_bg: Color.white2,
   Modal_body: Color.grey8,
   Modal_Navbar_bg: Color.white4,
-
+  Alert_bg : Color.black1,
+  Icons_bg: Color.yellow11,
+  Icons_bg1 : Color.green1,
+  Toast_bg: Color.red1,
 };
 
 export const lightTheme = {
@@ -45,4 +48,8 @@ export const lightTheme = {
   Modal_bg: Color.white2,
   Modal_body: Color.grey3,
   Modal_Navbar_bg: Color.white4,
+  Alert_bg : Color.black1,
+  Icons_bg: Color.yellow11,
+  Icons_bg1 : Color.green1,
+  Toast_bg: Color.red1,
 };
