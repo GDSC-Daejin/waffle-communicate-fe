@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useTodoDispatch, useTodoState } from "../Context";
@@ -17,11 +17,20 @@ export const ModalBackdrop = styled.div`
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
   z-index: 3;
-  cursor: default;
+  cursor: pointer;
+  ${({ disabled }) =>
+    disabled &&
+    `
+      cursor: progress;
+    `}
 `;
 export const ModalView = styled.div.attrs((props) => ({
   role: "dialog",
 }))`
+  position: fixed;
+  top: 30%;
+  left: 25%;
+  right: 0;
   width: 50%;
   height: 30 %;
   text-align: center;
@@ -31,6 +40,8 @@ export const ModalView = styled.div.attrs((props) => ({
   color: black;
   font-weight: ${(props) => props.theme.fontWeight};
   border: 3px solid ${(props) => props.theme.Modal_border_bg};
+  z-index: 4;
+  cursor: default;
 `;
 
 const Navbar = styled.div`
@@ -44,20 +55,40 @@ const Title = styled.div`
   margin-left: 5%;
 `;
 const Exit = styled.button`
-  margin-right: 5%;
+  margin-right: 2%;
   font-size: 34px;
   cursor: pointer;
-  all: unset;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
   &:hover {
     color: blue;
     cursor: pointer;
+    ${({ disabled }) =>
+      disabled &&
+      `
+    cursor: progress;
+  `}
   }
   color: grey;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-
+const TodoButton = styled.button`
+  transition: all 0.2s ease-in-out;
+  background-color: ${(props) => props.theme.buttoncolor};
+  border: 3px solid;
+  border-radius: 10px;
+  border-style: outset;
+  cursor: pointer;
+  font-size: 35px;
+  margin: 2px;
+  ${({ disabled }) =>
+    disabled &&
+    `
+    cursor: progress;
+  `}
+`;
 const ModalBody = styled.div`
   margin-top: 5%;
 `;
@@ -74,64 +105,56 @@ const ListAdd = styled.input`
   margin-right: 1%;
   font-size: 30px;
   height: 50px;
-`;
-const TodoButton = styled.button`
-  transition: all 0.2s ease-in-out;
-  background-color: ${(props) => props.theme.buttoncolor};
-  border: 3px solid;
-  border-radius: 10px;
-  border-style: outset;
-  cursor: pointer;
-  font-size: 35px;
-  margin: 2px;
+  ${({ disabled }) =>
+    disabled &&
+    `
+  cursor: progress;
+`}
 `;
 
 export const Modal = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState("");
   const [toastState, setToastState] = useState(false);
   const [code, setcode] = useState("");
 
+  const titleInputRef = useRef();
   const dispatch = useTodoDispatch();
   const todos = useTodoState();
 
-  let exitCode = 0;
   const openModalHandler = () => {
-    setIsOpen(!isOpen);
-    props.getDragMode(isOpen);
-    //setToastState(false);
-    setValue("");
-  };
-
-  const onChange = (e) => setValue(e.target.value);
-  const checker = () => {
-    if (!value || !value.replace(/\s/g, "").length) {
-      setcode("empty");
-      exitCode = -1;
+    if (!toastState) {
+      setIsOpen(!isOpen);
+      props.getDragMode(isOpen);
     }
-    todos.map((todo) => {
-      if (todo.text == value) {
-        setcode("repeated");
-        exitCode = -1;
-      }
-    });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    checker();
-    if (exitCode === -1) {
-      setToastState(true);
-      return setValue("");
-    }
-    dispatch({
-      type: "EDIT",
-      id: props.id,
-      text: value,
-    });
+    let exitCode = 0;
+    const enteredTitle = titleInputRef.current.value;
+    const resetTitle = () => {
+      titleInputRef.current.value = "";
+    };
     setToastState(true);
-    setcode("success");
-    setValue("");
+    if (!enteredTitle || !enteredTitle.replace(/\s/g, "").length) {
+      setcode("empty");
+    } else {
+      todos.map((todo) => {
+        if (todo.text == enteredTitle) {
+          setcode("repeated");
+          return (exitCode = -1);
+        }
+      });
+      if (exitCode === -1) return resetTitle();
+
+      dispatch({
+        type: "EDIT",
+        id: props.id,
+        text: enteredTitle,
+      });
+      setcode("success");
+      return resetTitle();
+    }
   };
   const onRemove = () => {
     dispatch({
@@ -150,11 +173,7 @@ export const Modal = (props) => {
   };
   const Alert = () => {
     return (
-      <>
-        {toastState === true ? (
-          <Toast setToastState={setToastState} code={code} />
-        ) : null}
-      </>
+      <>{toastState && <Toast setToastState={setToastState} code={code} />}</>
     );
   };
 
@@ -165,7 +184,8 @@ export const Modal = (props) => {
       </TodoButton>
       <Alert />
       {isOpen ? (
-        <ModalBackdrop>
+        <>
+          <ModalBackdrop onClick={openModalHandler} disabled={toastState} />
           <ModalView>
             <Navbar>
               <Title>EDIT</Title>
@@ -177,12 +197,13 @@ export const Modal = (props) => {
               <Form onSubmit={onSubmit}>
                 <ListAdd
                   autoFocus
-                  onChange={onChange}
-                  value={value}
                   placeholder={props.text}
                   disabled={toastState}
+                  ref={titleInputRef}
                 />
-                <TodoButton onClick={onSubmit}>수정하기</TodoButton>
+                <TodoButton onClick={onSubmit} disabled={toastState}>
+                  수정하기
+                </TodoButton>
               </Form>
             </ModalBody>
             <Modalfooter>
@@ -192,7 +213,7 @@ export const Modal = (props) => {
               </TodoButton>
             </Modalfooter>
           </ModalView>
-        </ModalBackdrop>
+        </>
       ) : null}
     </>
   );

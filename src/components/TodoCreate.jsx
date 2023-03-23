@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { useTodoDispatch, useTodoNextId, useTodoState } from "../Context";
 import { IoIosAdd } from "react-icons/io";
@@ -35,6 +35,11 @@ const ListAdd = styled.input`
   width: 80%;
   height: 40px;
   margin-bottom: 10px;
+  ${({ disabled }) =>
+    disabled &&
+    `
+    cursor: progress;
+    `}
 `;
 const Plus = styled.button`
   width: 50px;
@@ -46,52 +51,53 @@ const Plus = styled.button`
   background-color: ${(props) => props.theme.Plus_Button_bg};
   border-style: none;
   color: white;
+  ${({ disabled }) =>
+    disabled &&
+    `
+  cursor: progress;
+  `}
 `;
 
 function TodoCreate() {
   const [toastState, setToastState] = useState(false);
   const [code, setcode] = useState("");
-  const [value, setValue] = useState("");
+  const titleInputRef = useRef();
 
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
   const todos = useTodoState();
 
-  let exitCode = 0;
-  const onChange = (e) => setValue(e.target.value);
-  const checker = () => {
-    if (!value || !value.replace(/\s/g, "").length) {
-      setcode("empty");
-      exitCode = -1;
-    }
-    todos.map((todo) => {
-      if (todo.text == value) {
-        setcode("repeated");
-        exitCode = -1;
-      }
-    });
-  };
   const onSubmit = (e) => {
     e.preventDefault();
-    checker();
-    if (exitCode === -1) {
-      setToastState(true);
-      return setValue("");
-    }
-
-    dispatch({
-      type: "CREATE",
-      todo: {
-        id: nextId.current,
-        text: value,
-        done: false,
-      },
-    });
+    let exitCode = 0;
+    const enteredTitle = titleInputRef.current.value;
+    const resetTitle = () => {
+      titleInputRef.current.value = "";
+    };
     setToastState(true);
-    setcode("success");
-    nextId.current += 1;
-    setValue("");
-    return;
+    if (!enteredTitle || !enteredTitle.replace(/\s/g, "").length) {
+      setcode("empty");
+    } else {
+      todos.map((todo) => {
+        if (todo.text == enteredTitle) {
+          setcode("repeated");
+          return (exitCode = -1);
+        }
+      });
+      if (exitCode === -1) return resetTitle();
+
+      dispatch({
+        type: "CREATE",
+        todo: {
+          id: nextId.current,
+          text: enteredTitle,
+          done: false,
+        },
+      });
+      setcode("success");
+      nextId.current += 1;
+      return resetTitle();
+    }
   };
   const Alert = () => {
     return (
@@ -110,12 +116,11 @@ function TodoCreate() {
         <Form onSubmit={onSubmit}>
           <ListAdd
             autoFocus
-            onChange={onChange}
-            value={value}
             placeholder="할 일을 입력 후, Enter 를 누르세요"
+            ref={titleInputRef}
             disabled={toastState}
           />
-          <Plus>
+          <Plus disabled={toastState}>
             <IoIosAdd onClick={onSubmit} />
           </Plus>
         </Form>
