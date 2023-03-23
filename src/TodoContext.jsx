@@ -25,20 +25,7 @@ function todoReducer(state, action) {
   }
 }
 
-const initialTodos = [
-  {
-    id: 1,
-    text: "아침 산책",
-    done: false,
-  },
-  {
-    id: 2,
-    text: "오늘의 뉴스 읽기",
-    done: true,
-  },
-  { id: 3, text: "샌드위치 사 먹기", done: true },
-  { id: 4, text: "리액트 공부하기", done: false },
-];
+const initialTodos = [];
 
 export function TodoProvider({ children }) {
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
