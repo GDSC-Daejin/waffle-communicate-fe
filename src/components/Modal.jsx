@@ -173,7 +173,9 @@ export const Modal = (props) => {
   };
   const Alert = () => {
     return (
-      <>{toastState && <Toast setToastState={setToastState} code={code} />}</>
+      <>
+      {toastState && <Toast setToastState={setToastState} code={code} />}
+      </>
     );
   };
 
