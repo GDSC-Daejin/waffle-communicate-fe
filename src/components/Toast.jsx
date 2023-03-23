@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { useEffect} from "react";
+import styled, { css, keyframes } from "styled-components";
 import { GoAlert, GoCheck } from "react-icons/go";
 
 const slideIn = keyframes`
@@ -20,8 +20,6 @@ const slideOut = keyframes`
 `;
 
 const Alarm = styled.div`
-  
-  border: 1px solid ${(props) => props.theme.bgColor};
   box-shadow: 0 0.5rem 1rem reg(0 0 0 /15%);
   padding: 5px;
   text-align: center;
@@ -43,9 +41,13 @@ const Alarm = styled.div`
 const Alarm1 = styled.div` 
  display: flex;
  background-color: ${(props)=>props.theme.Alert_bg};
+ border-radius: 10px;
+ border: 2px solid #ECF9FF;
  ${({ error }) =>
     error &&
-    `
+    css`
+    border-radius: 10px;
+    border: 2px solid black;
     background-color: #E9573E;
   `}
 `;
@@ -78,7 +80,6 @@ function Toast(props) {
       case "repeated":
         msg = "이미 존재하는 내용입니다.";
         error=true;
-        console.log(error);
         return (
           <Alarm1 error={error}>
             <Icons1><GoAlert /></Icons1>
@@ -110,7 +111,7 @@ function Toast(props) {
     }
   };
 
-  return <Alarm error={error}>{Alert()}</Alarm>;
+  return <Alarm>{Alert()}</Alarm>;
 }
 
 export default Toast;

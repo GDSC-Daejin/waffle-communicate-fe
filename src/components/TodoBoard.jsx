@@ -19,6 +19,7 @@ const Wrapper_complete = styled.div`
   width: 50%;
 `;
 const Status = styled.h1`
+  height:100%;
   font-size: 30px;
   padding: 2% 0px;
   font-weight: bold;
