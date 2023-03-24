@@ -8,6 +8,8 @@ const Logos = styled.div`
   font-size: 22px;
   font-weight: bold;
   padding: 10px;
+  border-top : 2px solid ${(props)=> props.theme.Color};
+  transform : translateY(100%);
 `;
 
 function Footer() {

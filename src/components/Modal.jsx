@@ -98,7 +98,8 @@ const Modalfooter = styled.div`
   padding: 5% 0%;
 `;
 
-const Form = styled.form``;
+const Form = styled.form`
+`;
 const ListAdd = styled.input`
   width: 70%;
   margin-bottom: 10px;

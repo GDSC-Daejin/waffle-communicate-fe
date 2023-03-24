@@ -24,7 +24,6 @@ const Status = styled.h1`
   padding: 2% 0px;
   font-weight: bold;
   padding-left: 10px;
-  border: 1px solid;
 `;
 const Container_board = styled.div`
   display: grid;
@@ -34,7 +33,8 @@ const Container_board = styled.div`
   flex-wrap: wrap;
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
   background-color: ${(props) => props.theme.todo_create_bg};
-  border: 1px solid;
+  border: 2px solid;
+  border-top: none; 
 `;
 function TodoBoard() {
   const [toastState, setToastState] = useState(false);

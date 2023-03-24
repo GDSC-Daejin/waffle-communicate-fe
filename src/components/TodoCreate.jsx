@@ -7,7 +7,7 @@ import Toast from "./Toast";
 const Todocreate = styled.div`
   margin-top: 5%;
   padding-top: 25px;
-  border-bottom: 1px solid;
+  border-bottom: 3px solid ;
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
@@ -16,6 +16,7 @@ const Todocreate = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-bottom: none;
 `;
 const Title = styled.h1`
   align-items: center;
@@ -35,6 +36,7 @@ const ListAdd = styled.input`
   width: 80%;
   height: 40px;
   margin-bottom: 10px;
+  
   ${({ disabled }) =>
     disabled &&
     `

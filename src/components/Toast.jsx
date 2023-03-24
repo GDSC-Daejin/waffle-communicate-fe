@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import { GoAlert, GoCheck } from "react-icons/go";
 
@@ -41,13 +41,13 @@ const Alarm = styled.div`
 const Alarm1 = styled.div` 
  display: flex;
  background-color: ${(props)=>props.theme.Alert_bg};
+ border: 2px solid ${(props)=> props.theme.Alram_bg};
  border-radius: 10px;
- border: 2px solid #ECF9FF;
  ${({ error }) =>
     error &&
     css`
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid black ;
     background-color: #E9573E;
   `}
 `;
