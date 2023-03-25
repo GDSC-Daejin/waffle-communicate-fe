@@ -2,27 +2,36 @@ import React from "react";
 import Logo from "../assets/Logo.png";
 import styled from "styled-components";
 
-const Logos = styled.div`
+const Footers = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   font-size: 22px;
   font-weight: bold;
-  padding: 10px;
   background-color: ${(props)=> props.theme.Footer_bg};
   border : 2px solid ${(props)=> props.theme.Color};
   border-bottom: none;
   font-size: 25px;
-  position: relative;
-  top: 400px;
+  /* position: relative;
+  top: 460px; */
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 80%;
+  margin-left : auto; 
+  margin-right : auto;
 `;
+
 
 function Footer() {
   return (
     <>
-      <Logos>
-        <img src={Logo} alt="GDSC로고" width="150" height="130" />
+      <Footers>
+        <img src={Logo} alt="GDSC로고" width={80} height={48}/>
         <p>Donny & James</p>
-      </Logos>
+      </Footers>
     </>
   );
 }
