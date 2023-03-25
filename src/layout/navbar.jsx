@@ -3,21 +3,20 @@ import styled from "styled-components";
 //import {Header, Brand, Mode} from "./navbar.styled";
 
 const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: ${(props) => props.theme.border};
   padding: 10px;
-  display : flex;
   border: 2px solid;
-  background-color: ${(props)=> props.theme.Header_bg};
-  font-weight:${(props)=>props.theme.fontWeight};
-  justify-content:space-between;
+  background-color: ${(props) => props.theme.Header_bg};
+  font-weight: ${(props) => props.theme.fontWeight};
 `;
 
 const Brand = styled.h1`
   font-size: 29px;
 `;
-const Mode_div = styled.div `
- 
-`;
+const Mode_div = styled.div``;
 
 const Mode = styled.button`
   border: 1px #aaaaaa;
@@ -37,7 +36,6 @@ function Home({ isDarkMode, toggleDarkMode }) {
   return (
     <>
       <Header>
-
         <Brand>소통해요 🙌</Brand>
         <Mode_div>
           <Mode onClick={() => toggleDarkMode()}>

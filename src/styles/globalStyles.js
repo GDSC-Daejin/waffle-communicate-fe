@@ -14,7 +14,7 @@ export default createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.color};
-    position:relative;
+    position: relative;
     display: block;
     width:80%;
     height: 100%;

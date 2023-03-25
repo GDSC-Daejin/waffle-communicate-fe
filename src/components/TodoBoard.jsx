@@ -19,11 +19,13 @@ const Wrapper_complete = styled.div`
   width: 50%;
 `;
 const Status = styled.h1`
-  height:100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 100%;
   font-size: 30px;
-  padding: 2% 0px;
+  padding: 2% 6%;
   font-weight: bold;
-  padding-left: 10px;
 `;
 const Container_board = styled.div`
   display: grid;
@@ -34,7 +36,8 @@ const Container_board = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(50%, auto));
   background-color: ${(props) => props.theme.todo_create_bg};
   border: 2px solid;
-  border-top: none; 
+  border-top: none;
+  margin-bottom: 500px;
 `;
 function TodoBoard() {
   const [toastState, setToastState] = useState(false);
@@ -72,10 +75,16 @@ function TodoBoard() {
       <Alert />
       <Container_status>
         <Wrapper_uncomplete>
-          <Status>UNCOMPLETE ({uncomplete.length})</Status>
+          <Status>
+            <div>UNCOMPLETE</div>
+            <div>({uncomplete.length})</div>
+          </Status>
         </Wrapper_uncomplete>
         <Wrapper_complete>
-          <Status>COMPLETE ({complete.length})</Status>
+        <Status>
+            <div>COMPLETE</div>
+            <div>({complete.length})</div>
+          </Status>
         </Wrapper_complete>
       </Container_status>
       <Container_board
