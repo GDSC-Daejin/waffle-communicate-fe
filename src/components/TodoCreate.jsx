@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTodoDispatch, useTodoNextId, useTodoState } from "../Context";
 import { IoIosAdd } from "react-icons/io";
 import Toast from "./Toast";
+import { customMedia } from "../styles/globalStyles";
 
 const Todocreate = styled.div`
   margin-top: 5%;
@@ -24,19 +25,28 @@ const Title = styled.h1`
   padding-bottom: 20px;
   font-size: 35px;
   font-weight: ${(props) => props.theme.fontWeight};
+  ${customMedia.lessThan('mobile')`
+		width: 80%;
+		font-size:25px;
+	`}
 `;
 const Form = styled.form`
   padding-bottom: 20px;
   display: flex;
-  width: 50%;
+  justify-content: space-between;
+  flex-direction: row;
+  
   padding-left: 45px;
 `;
 const ListAdd = styled.input`
-  position: flex;
-  width: 80%;
+ 
+  width: 400px;
   height: 40px;
   margin-bottom: 10px;
-  
+  ${customMedia.lessThan('mobile')`
+		width: 80%;
+		font-size: 15px;
+	`}
   ${({ disabled }) =>
     disabled &&
     `
@@ -44,7 +54,7 @@ const ListAdd = styled.input`
     `}
 `;
 const Plus = styled.button`
-  width: 50px;
+ 
   height: 40px;
   border-radius: 50%;
   font-size: 34px;

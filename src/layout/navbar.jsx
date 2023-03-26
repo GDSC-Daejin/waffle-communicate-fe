@@ -1,23 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 //import {Header, Brand, Mode} from "./navbar.styled";
+import { customMedia } from "../styles/globalStyles";
 
 const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: ${(props) => props.theme.border};
   padding: 10px;
-  display : flex;
   border: 2px solid;
-  background-color: ${(props)=> props.theme.Header_bg};
-  font-weight:${(props)=>props.theme.fontWeight};
-  justify-content:space-between;
+  background-color: ${(props) => props.theme.Header_bg};
+  font-weight: ${(props) => props.theme.fontWeight};
+  ${customMedia.lessThan('mobile')`
+    width: 100%;
+  `};
 `;
 
 const Brand = styled.h1`
   font-size: 29px;
+  ${customMedia.lessThan('mobile')`
+    font-size: 19px;
+  `};
 `;
-const Mode_div = styled.div `
- 
-`;
+const Mode_div = styled.div``;
 
 const Mode = styled.button`
   border: 1px #aaaaaa;
@@ -37,7 +43,6 @@ function Home({ isDarkMode, toggleDarkMode }) {
   return (
     <>
       <Header>
-
         <Brand>소통해요 🙌</Brand>
         <Mode_div>
           <Mode onClick={() => toggleDarkMode()}>

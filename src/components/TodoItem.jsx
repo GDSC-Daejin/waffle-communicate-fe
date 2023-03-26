@@ -1,8 +1,11 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useTodoDispatch } from "../Context";
 import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
+import { customMedia } from "../styles/globalStyles";
+
 
 export const Wrapper_uncomplete = styled.div`
   width: 100%;
@@ -23,6 +26,13 @@ const Context = styled.div`
   cursor: grab;
   border-radius: 30px;
   border: 2px solid ${(props) => props.theme.contextbg};
+  ${customMedia.lessThan('mobile')`
+    width:93%;
+    font-size:15px;
+    margin-left:5px;
+    margin: 6px;
+    overflow: auto;
+  `};
 `;
 
 const TodoButton = styled.button`
@@ -36,7 +46,14 @@ const TodoButton = styled.button`
   position: relative;
   left: 2px;
   margin: 2px;
+  ${customMedia.lessThan('mobile')`
+    width:25%;
+    font-size:15px;
+    position: relative;
+    left:-3px;
+  `};
 `;
+
 
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();

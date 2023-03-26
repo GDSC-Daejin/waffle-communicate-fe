@@ -25,6 +25,7 @@ export const darkTheme = {
   Icons_bg: Color.yellow11,
   Icons_bg1 : Color.green1,
   Toast_bg: Color.red1,
+  Footer_bg : Color.grey9,
 };
 
 export const lightTheme = {
@@ -52,4 +53,5 @@ export const lightTheme = {
   Icons_bg: Color.yellow11,
   Icons_bg1 : Color.green1,
   Toast_bg: Color.red1,
+  Footer_bg : Color.yellow5,
 };

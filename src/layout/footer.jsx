@@ -1,24 +1,33 @@
 import React from "react";
 import Logo from "../assets/Logo.png";
 import styled from "styled-components";
+import { customMedia } from "../styles/globalStyles";
 
-const Logos = styled.div`
+const Footers = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 22px;
+  flex-direction: row;
+  font-size: 35px;
+  align-items: center;
   font-weight: bold;
+  background-color: ${(props) => props.theme.Footer_bg};
+  border: 2px solid ${(props) => props.theme.Color};
   padding: 10px;
-  border-top : 2px solid ${(props)=> props.theme.Color};
-  transform : translateY(100%);
+  position: sticky;
+  bottom: 0px;
+  ${customMedia.lessThan('mobile')`
+    width: 100%;
+		font-size: 15px;
+  `}
 `;
 
 function Footer() {
   return (
     <>
-      <Logos>
-        <img src={Logo} alt="GDSC로고" width="150" height="130" />
+      <Footers>
+        <img src={Logo} alt="GDSC로고" width={80} height={48} />
         <p>Donny & James</p>
-      </Logos>
+      </Footers>
     </>
   );
 }
