@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { useTodoDispatch, useTodoState } from "../Context";
 import Toast from "./Toast";
+import { customMedia } from "../styles/globalStyles";
 
 const Container_status = styled.div`
   display: flex;
@@ -23,9 +24,13 @@ const Status = styled.h1`
   justify-content: space-between;
   flex-direction: row;
   height: 100%;
-  font-size: 30px;
+  font-size: 1.5rem;
   padding: 2% 6%;
   font-weight: bold;
+  ${customMedia.lessThan('mobile')`
+		width: 100%;
+		font-size: 15px;
+	`}
 `;
 const Container_board = styled.div`
   display: grid;

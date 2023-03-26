@@ -1,8 +1,17 @@
 import { createGlobalStyle } from "styled-components";
+import { generateMedia } from "styled-media-query";
 import reset from "styled-reset";
 
+
+export const customMedia = generateMedia({
+  desktop: '78em',
+  tablet: '60em',
+  mobile: '46em'
+})
 // 기본 스타일 입니다.
 //reset.css
+
+
 export default createGlobalStyle`
   ${reset}
 
@@ -16,6 +25,7 @@ export default createGlobalStyle`
     color: ${(props) => props.theme.color};
     position: relative;
     display: block;
+    font-size: 12px;
     width:80%;
     height: 100%;
     line-height: 1.5;
@@ -25,4 +35,5 @@ export default createGlobalStyle`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
+
 `;

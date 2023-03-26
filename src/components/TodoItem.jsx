@@ -1,8 +1,10 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useTodoDispatch } from "../Context";
 import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
+
 
 export const Wrapper_uncomplete = styled.div`
   width: 100%;
@@ -37,6 +39,7 @@ const TodoButton = styled.button`
   left: 2px;
   margin: 2px;
 `;
+
 
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
