@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../assets/Logo.png";
 import styled from "styled-components";
+import { customMedia } from "../styles/globalStyles";
 
 const Footers = styled.div`
   display: flex;
@@ -14,6 +15,10 @@ const Footers = styled.div`
   padding: 10px;
   position: sticky;
   bottom: 0px;
+  ${customMedia.lessThan('mobile')`
+    width: 100%;
+		font-size: 15px;
+  `}
 `;
 
 function Footer() {
