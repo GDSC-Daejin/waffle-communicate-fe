@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useTodoDispatch, useTodoState } from "../Context";
 import Toast from "./Toast";
+import { customMedia } from "../styles/globalStyles";
 
 export const ModalBackdrop = styled.div`
   width: 100%;
@@ -42,6 +43,11 @@ export const ModalView = styled.div.attrs((props) => ({
   border: 3px solid ${(props) => props.theme.Modal_border_bg};
   z-index: 4;
   cursor: default;
+    ${customMedia.lessThan('mobile')`
+    width:70%;
+    position: fixed;
+    left: 15%;
+  `};
 `;
 
 const Navbar = styled.div`
@@ -83,6 +89,11 @@ const TodoButton = styled.button`
   cursor: pointer;
   font-size: 35px;
   margin: 2px;
+  ${customMedia.lessThan('mobile')`
+    font-size:15px;
+    position: relative;
+    left:-3px;
+  `};
   ${({ disabled }) =>
     disabled &&
     `
@@ -91,11 +102,21 @@ const TodoButton = styled.button`
 `;
 const ModalBody = styled.div`
   margin-top: 5%;
+  ${customMedia.lessThan('mobile')`
+    width:100%;
+    padding-left:3px;
+    position:relative;
+    top:10px;
+  `};
 `;
 const Modalfooter = styled.div`
   display: flex;
   justify-content: center;
   padding: 5% 0%;
+  ${customMedia.lessThan('mobile')`
+      position:relative;
+      top:30px;
+  `};
 `;
 
 const Form = styled.form`
@@ -110,6 +131,7 @@ const ListAdd = styled.input`
     disabled &&
     `
   cursor: progress;
+  
 `}
 `;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 //import {Header, Brand, Mode} from "./navbar.styled";
+import { customMedia } from "../styles/globalStyles";
 
 const Header = styled.div`
   display: flex;
@@ -11,10 +12,16 @@ const Header = styled.div`
   border: 2px solid;
   background-color: ${(props) => props.theme.Header_bg};
   font-weight: ${(props) => props.theme.fontWeight};
+  ${customMedia.lessThan('mobile')`
+    width: 100%;
+  `};
 `;
 
 const Brand = styled.h1`
   font-size: 29px;
+  ${customMedia.lessThan('mobile')`
+    font-size: 19px;
+  `};
 `;
 const Mode_div = styled.div``;
 

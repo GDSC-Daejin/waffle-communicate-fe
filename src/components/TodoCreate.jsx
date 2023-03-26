@@ -25,6 +25,10 @@ const Title = styled.h1`
   padding-bottom: 20px;
   font-size: 35px;
   font-weight: ${(props) => props.theme.fontWeight};
+  ${customMedia.lessThan('mobile')`
+		width: 80%;
+		font-size:25px;
+	`}
 `;
 const Form = styled.form`
   padding-bottom: 20px;
