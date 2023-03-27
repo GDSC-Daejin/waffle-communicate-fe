@@ -71,9 +71,10 @@ const Plus = styled.button`
   ${({ disabled }) =>
     disabled &&
     `
+    width:45px;
     cursor: progress;
-    text-align:center;
     font-size:14px;
+    text-align:center;
   `}
    ${customMedia.lessThan("mobile")`
   `};

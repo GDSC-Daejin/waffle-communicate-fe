@@ -101,9 +101,10 @@ const TodoButton = styled.button`
   margin: 2px;
   ${customMedia.lessThan("mobile")`
     width:30%;
-    font-size:15px;
+    font-size:12px;
     position: relative;
     left:-3px;
+    text-align:center;
   `};
   /* 삼항 연산자 */
   ${({ disabled }) => disabled && `cursor: progress;`}
