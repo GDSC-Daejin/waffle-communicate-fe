@@ -53,9 +53,10 @@ const ModalView = styled.div.attrs((props) => ({
   user-select: none;
   
   ${customMedia.lessThan("mobile")`
-    width:70%;
+    width:80%;
     position: fixed;
-    left: 15%;
+    left: 10%;
+    height:auto;
   `};
 `;
 
@@ -123,8 +124,6 @@ const ModalFooter = styled.div`
   padding: 5% 0%;
   
   ${customMedia.lessThan('mobile')`
-    position: relative;
-    top: 30px;
   `};
 `;
 

@@ -73,6 +73,8 @@ const Plus = styled.button`
     `
     cursor: progress;
   `}
+   ${customMedia.lessThan("mobile")`
+  `};
 `;
 
 function TodoCreate() {
