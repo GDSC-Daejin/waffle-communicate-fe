@@ -140,7 +140,7 @@ const ListAdd = styled.input`
   `};
    ${customMedia.lessThan("mobile")`
     width:250px;
-    height:35px;
+    height:50px;
   `};
 `;
 /* export 삭제 */

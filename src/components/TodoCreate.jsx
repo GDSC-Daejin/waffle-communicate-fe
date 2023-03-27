@@ -74,8 +74,8 @@ const Plus = styled.button`
     cursor: progress;
   `}
    ${customMedia.lessThan("mobile")`
-    width: 20%;
-    font-size: 25px;
+    width: 45px;
+    font-size: 20px;
   `};
 `;
 
