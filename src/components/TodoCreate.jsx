@@ -47,7 +47,7 @@ const ListAdd = styled.input`
   margin-bottom: 10px;
 
   ${customMedia.lessThan("mobile")`
-    width: 80%;
+    width: 70%;
     font-size: 15px;
   `}
 
@@ -74,6 +74,8 @@ const Plus = styled.button`
     cursor: progress;
   `}
    ${customMedia.lessThan("mobile")`
+    width: 20%;
+    font-size: 25px;
   `};
 `;
 

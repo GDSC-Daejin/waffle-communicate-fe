@@ -123,8 +123,6 @@ const ModalFooter = styled.div`
   justify-content: center;
   padding: 5% 0%;
   
-  ${customMedia.lessThan('mobile')`
-  `};
 `;
 
 const Form = styled.form`
@@ -139,6 +137,10 @@ const ListAdd = styled.input`
   
   ${({ disabled }) => disabled && `
     cursor: progress;
+  `};
+   ${customMedia.lessThan("mobile")`
+    width:250px;
+    height:35px;
   `};
 `;
 /* export 삭제 */
