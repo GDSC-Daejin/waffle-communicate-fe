@@ -72,10 +72,10 @@ const Plus = styled.button`
     disabled &&
     `
     cursor: progress;
+    text-align:center;
+    font-size:14px;
   `}
    ${customMedia.lessThan("mobile")`
-    width: 45px;
-    font-size: 20px;
   `};
 `;
 

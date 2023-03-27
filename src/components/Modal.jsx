@@ -100,6 +100,7 @@ const TodoButton = styled.button`
   font-size: 35px;
   margin: 2px;
   ${customMedia.lessThan("mobile")`
+    width:30%;
     font-size:15px;
     position: relative;
     left:-3px;

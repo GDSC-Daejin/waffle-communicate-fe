@@ -40,9 +40,9 @@ const TodoButton = styled.button`
   left: 2px;
   margin: 2px;
   ${customMedia.lessThan("mobile")`
-    width:25%;
+    width:30%;
     font-size:15px;
-    position: relative;
+    position:relative;
     left:-3px;
   `};
 `;
