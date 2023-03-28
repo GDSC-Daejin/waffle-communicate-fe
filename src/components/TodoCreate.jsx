@@ -67,16 +67,14 @@ const Plus = styled.button`
   background-color: ${(props) => props.theme.Plus_Button_bg};
   border-style: none;
   color: white;
-
   ${({ disabled }) =>
     disabled &&
     `
-    width:45px;
     cursor: progress;
-    font-size:14px;
-    text-align:center;
   `}
    ${customMedia.lessThan("mobile")`
+   width:30px;
+   text-align:center;
   `};
 `;
 
