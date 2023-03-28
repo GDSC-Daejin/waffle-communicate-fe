@@ -73,7 +73,6 @@ const Plus = styled.button`
     cursor: progress;
   `}
    ${customMedia.lessThan("mobile")`
-    width:20px;
   `};
 `;
 
