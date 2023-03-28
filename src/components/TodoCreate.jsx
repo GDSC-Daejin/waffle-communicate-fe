@@ -73,8 +73,7 @@ const Plus = styled.button`
     cursor: progress;
   `}
    ${customMedia.lessThan("mobile")`
-   width:30px;
-   text-align:center;
+    width:20px;
   `};
 `;
 
