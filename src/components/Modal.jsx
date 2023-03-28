@@ -53,9 +53,10 @@ const ModalView = styled.div.attrs((props) => ({
   user-select: none;
   
   ${customMedia.lessThan("mobile")`
-    width:70%;
+    width:80%;
     position: fixed;
-    left: 15%;
+    left: 10%;
+    height:auto;
   `};
 `;
 
@@ -99,9 +100,11 @@ const TodoButton = styled.button`
   font-size: 35px;
   margin: 2px;
   ${customMedia.lessThan("mobile")`
-    font-size:15px;
+    width:30%;
+    font-size:12px;
     position: relative;
     left:-3px;
+    text-align:center;
   `};
   /* 삼항 연산자 */
   ${({ disabled }) => disabled && `cursor: progress;`}
@@ -122,10 +125,6 @@ const ModalFooter = styled.div`
   justify-content: center;
   padding: 5% 0%;
   
-  ${customMedia.lessThan('mobile')`
-    position: relative;
-    top: 30px;
-  `};
 `;
 
 const Form = styled.form`
@@ -140,6 +139,10 @@ const ListAdd = styled.input`
   
   ${({ disabled }) => disabled && `
     cursor: progress;
+  `};
+   ${customMedia.lessThan("mobile")`
+    width:250px;
+    height:30px;
   `};
 `;
 /* export 삭제 */

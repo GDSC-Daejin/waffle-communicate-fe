@@ -40,10 +40,11 @@ const TodoButton = styled.button`
   left: 2px;
   margin: 2px;
   ${customMedia.lessThan("mobile")`
-    width:25%;
-    font-size:15px;
-    position: relative;
+    width:30%;
+    font-size:12px;
+    position:relative;
     left:-3px;
+    text-align:center;
   `};
 `;
 
