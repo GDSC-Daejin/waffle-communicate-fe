@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { useTodoDispatch, useTodoNextId, useTodoState } from "../Context";
 import { IoIosAdd } from "react-icons/io";
 import Toast from "./Toast";
 import { customMedia } from "../styles/globalStyles";
+import { useTodoDispatch, useTodoNextId, useTodoState } from "../Context";
 
 const Todocreate = styled.div`
   margin-top: 5%;
   padding-top: 25px;
-  border-bottom: 3px solid ;
+  border-bottom: 3px solid;
   width: 100%;
   padding-bottom: 15px;
   border: 3px solid;
@@ -19,42 +19,47 @@ const Todocreate = styled.div`
   flex-direction: column;
   border-bottom: none;
 `;
+
 const Title = styled.h1`
   align-items: center;
   text-align: center;
   padding-bottom: 20px;
   font-size: 35px;
   font-weight: ${(props) => props.theme.fontWeight};
-  ${customMedia.lessThan('mobile')`
-		width: 80%;
-		font-size:25px;
-	`}
+
+  ${customMedia.lessThan("mobile")`
+    width: 80%;
+    font-size: 25px;
+  `}
 `;
+
 const Form = styled.form`
   padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  
   padding-left: 45px;
+  align-items: center;
 `;
+
 const ListAdd = styled.input`
- 
   width: 400px;
   height: 40px;
   margin-bottom: 10px;
-  ${customMedia.lessThan('mobile')`
-		width: 80%;
-		font-size: 15px;
-	`}
+
+  ${customMedia.lessThan("mobile")`
+    width: 70%;
+    font-size: 15px;
+  `}
+
   ${({ disabled }) =>
     disabled &&
     `
     cursor: progress;
-    `}
+  `}
 `;
+
 const Plus = styled.button`
- 
   height: 40px;
   border-radius: 50%;
   font-size: 34px;
@@ -66,13 +71,19 @@ const Plus = styled.button`
   ${({ disabled }) =>
     disabled &&
     `
-  cursor: progress;
+    cursor: progress;
   `}
+   ${customMedia.lessThan("mobile")`
+  height :auto;
+  weight : auto;
+  border-radius: 30%;
+  text-align: center;
+  `};
 `;
 
 function TodoCreate() {
   const [toastState, setToastState] = useState(false);
-  const [code, setcode] = useState("");
+  const [code, setCode] = useState("");
   const titleInputRef = useRef();
 
   const dispatch = useTodoDispatch();
@@ -81,24 +92,15 @@ function TodoCreate() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let exitCode = 0;
-    const enteredTitle = titleInputRef.current.value;
-    const resetTitle = () => {
-      titleInputRef.current.value = "";
-    };
-    setToastState(true);
-    if (!enteredTitle || !enteredTitle.replace(/\s/g, "").length) {
-      
-      setcode("empty");
-    } else {
-      todos.map((todo) => {
-        if (todo.text == enteredTitle) {
-          setcode("repeated");
-          return (exitCode = -1);
-        }
-      });
-      if (exitCode === -1) return resetTitle();
+    const enteredTitle = titleInputRef.current.value.trim();
+    const isTitleEmpty = !enteredTitle;
+    const isTitleRepeated = todos.some((todo) => todo.text === enteredTitle);
 
+    if (isTitleEmpty) {
+      setCode("empty");
+    } else if (isTitleRepeated) {
+      setCode("repeated");
+    } else {
       dispatch({
         type: "CREATE",
         todo: {
@@ -107,23 +109,17 @@ function TodoCreate() {
           done: false,
         },
       });
-      setcode("success");
+      setCode("success");
       nextId.current += 1;
-      return resetTitle();
+      titleInputRef.current.value = "";
     }
+    setToastState(true);
   };
-  const Alert = () => {
-    return (
-      <>
-        {toastState === true ? (
-          <Toast setToastState={setToastState} code={code} />
-        ) : null}
-      </>
-    );
-  };
+
   return (
+    /* toastState &&로 변경 */
     <>
-      <Alert />
+      {toastState && <Toast setToastState={setToastState} code={code} />}
       <Todocreate>
         <Title>To do List</Title>
         <Form onSubmit={onSubmit}>
@@ -134,7 +130,7 @@ function TodoCreate() {
             disabled={toastState}
           />
           <Plus disabled={toastState}>
-            <IoIosAdd onClick={onSubmit} />
+            <IoIosAdd disabled={toastState} onClick={onSubmit} />
           </Plus>
         </Form>
       </Todocreate>
@@ -143,3 +139,7 @@ function TodoCreate() {
 }
 
 export default React.memo(TodoCreate);
+
+/*
+
+*/

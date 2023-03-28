@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useTodoDispatch } from "../Context";
@@ -6,15 +5,9 @@ import { FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
 import { customMedia } from "../styles/globalStyles";
 
-
-export const Wrapper_uncomplete = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
-  grid-column-start: 1;
-`;
-
-export const Wrapper_complete = styled.div`
-  width: 100%;
-  grid-column-start: 2;
+  grid-column-start: ${(props) => (props.done ? 2 : 1)};
 `;
 
 const Context = styled.div`
@@ -26,7 +19,7 @@ const Context = styled.div`
   cursor: grab;
   border-radius: 30px;
   border: 2px solid ${(props) => props.theme.contextbg};
-  ${customMedia.lessThan('mobile')`
+  ${customMedia.lessThan("mobile")`
     width:93%;
     font-size:15px;
     margin-left:5px;
@@ -46,14 +39,14 @@ const TodoButton = styled.button`
   position: relative;
   left: 2px;
   margin: 2px;
-  ${customMedia.lessThan('mobile')`
-    width:25%;
-    font-size:15px;
-    position: relative;
+  ${customMedia.lessThan("mobile")`
+    width:30%;
+    font-size:12px;
+    position:relative;
     left:-3px;
+    text-align:center;
   `};
 `;
-
 
 function TodoItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
@@ -61,7 +54,6 @@ function TodoItem({ id, done, text }) {
   const getDragMode = (prop) => {
     setDragMode(prop);
   };
-
   const onRemove = () => {
     dispatch({
       type: "REMOVE",
@@ -69,40 +61,23 @@ function TodoItem({ id, done, text }) {
     });
     alert("삭제되었습니다.");
   };
+
   const Drag_Started = (e, id) => {
     e.dataTransfer.setData("drag_startID", id);
   };
 
   return (
-    <>
-      {!done ? (
-        <Wrapper_uncomplete>
-          <Context
-            draggable={dragMode}
-            onDragStart={(e) => Drag_Started(e, id)}
-          >
-            <Modal id={id} text={text} getDragMode={getDragMode} />
-            <TodoButton onClick={onRemove}>
-              <FiTrash2 />
-            </TodoButton>
-            {text}
-          </Context>
-        </Wrapper_uncomplete>
-      ) : (
-        <Wrapper_complete>
-          <Context
-            draggable={dragMode}
-            onDragStart={(e) => Drag_Started(e, id)}
-          >
-            <TodoButton onClick={onRemove} getDragMode={getDragMode}>
-              <FiTrash2 />
-            </TodoButton>
-
-            {text}
-          </Context>
-        </Wrapper_complete>
-      )}
-    </>
+    <Wrapper done={done}>
+      <Context draggable={dragMode} onDragStart={(e) => Drag_Started(e, id)}>
+        {!done && (
+        <Modal id={id} text={text} getDragMode={getDragMode} />
+        )}
+        <TodoButton onClick={onRemove}>
+          <FiTrash2 />
+        </TodoButton>
+        {text}
+      </Context>
+    </Wrapper>
   );
 }
 

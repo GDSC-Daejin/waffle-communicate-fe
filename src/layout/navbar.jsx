@@ -23,7 +23,8 @@ const Brand = styled.h1`
     font-size: 19px;
   `};
 `;
-const Mode_div = styled.div``;
+const Mode_div = styled.div`
+`;
 
 const Mode = styled.button`
   border: 1px #aaaaaa;
