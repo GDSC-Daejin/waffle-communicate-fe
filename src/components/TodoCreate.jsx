@@ -39,6 +39,7 @@ const Form = styled.form`
   justify-content: space-between;
   flex-direction: row;
   padding-left: 45px;
+  align-items: center;
 `;
 
 const ListAdd = styled.input`
@@ -73,6 +74,10 @@ const Plus = styled.button`
     cursor: progress;
   `}
    ${customMedia.lessThan("mobile")`
+  height :auto;
+  weight : auto;
+  border-radius: 30%;
+  text-align: center;
   `};
 `;
 
@@ -125,7 +130,7 @@ function TodoCreate() {
             disabled={toastState}
           />
           <Plus disabled={toastState}>
-            <IoIosAdd onClick={onSubmit} />
+            <IoIosAdd disabled={toastState} onClick={onSubmit} />
           </Plus>
         </Form>
       </Todocreate>
@@ -134,3 +139,7 @@ function TodoCreate() {
 }
 
 export default React.memo(TodoCreate);
+
+/*
+
+*/
